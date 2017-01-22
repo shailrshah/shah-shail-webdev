@@ -17,6 +17,3 @@ body {
 input[type]:focus, textarea:focus{
     border: 3px solid chartreuse;
 }
-input[type]{
-    font-size: 16px;
-}
