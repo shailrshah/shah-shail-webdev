@@ -9,19 +9,21 @@
 <body>
     <div class="container">
         <h1>Register</h1>
-        <input type="text"
-               class="form-control"
-               placeholder="username"/>
-        <input type="password"
-               class="form-control"
-               placeholder="password"/>
-        <input type="password"
-               class="form-control"
-               placeholder="very password"/>
-        <a class="btn btn-primary btn-block"
+        <form>
+        <p><label class="sr-only" for="username">username</label>
+            <input class="form-control" type="text" placeholder="username" id="username"></p>
+
+        <p><label class="sr-only" for="password">password</label>
+            <input class="form-control" type="password" placeholder="password" id="password"></p>
+
+        <p><label class="sr-only" for="verify-password">re-enter password</label>
+            <input class="form-control" type="password" placeholder="re-enter password" id="verify-password"></p>
+
+        <a class="btn btn-success btn-lg btn-block"
            href="profile.html">Register</a>
-        <a class="btn btn-danger  btn-block"
+        <a class="btn btn-danger btn-lg btn-block"
            href="login.html">Cancel</a>
+        </form>
     </div>
 </body>
 </html>

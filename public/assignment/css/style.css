@@ -3,5 +3,17 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 60px;
+    background-color: black;
+    color: white;
+}
+.navbar{
+    background-color: #40cc7d;
+}
+.navbar-text{
+    color: white;
+}
+
+input[type]:focus, textarea:focus{
+    border: 3px solid chartreuse;
 }
