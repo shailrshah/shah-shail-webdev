@@ -1,3 +1,9 @@
+.form-control:focus{
+    border: 3px solid chartreuse;
+}
+img{
+    width: 100%;
+}
 input.form-control {
     margin-bottom: 5px;
 }
@@ -12,13 +18,10 @@ body {
 .navbar{
     background-color: #40cc7d;
 }
-.navbar-heade{
+.navbar-head{
     color: white;
 }
 
-input[type]:focus, textarea:focus{
-    border: 3px solid chartreuse;
-}
 .input-lg{
     height: 3em;
     font-size: 1em;
@@ -27,4 +30,14 @@ input[type]:focus, textarea:focus{
 
 .list-group-item{
     background-color: inherit;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    padding-left: 25px;
+    padding-right: 15px;
+}
+
+.pull-right{
+    padding-right: 15px;
 }

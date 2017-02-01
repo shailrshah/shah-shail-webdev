@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Websites</title>
+    <title>Edit Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
@@ -12,22 +12,22 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row" style="margin:0; padding:0">
         <div class="col-sm-4 hidden-xs">
-                <a href="website-new.html">
-                    <span class="glyphicon glyphicon-chevron-left" style="position: absolute;top:30%"></span>
-                </a>
+            <a href="page-new.html">
+                <span class="glyphicon glyphicon-chevron-left" style="position: absolute;top:30%"></span>
+            </a>
 
-                <a class="navbar-brand" href="#">Websites</a>
-                <a href="website-new.html">
-                    <span class="glyphicon glyphicon-plus pull-right navbar-brand"></span>
-                </a>
+            <a class="navbar-brand" href="#">Pages</a>
+            <a href="page-new.html">
+                <span class="glyphicon glyphicon-plus pull-right navbar-brand"></span>
+            </a>
         </div>
 
         <div class="col-sm-8" style="margin:0; padding:0">
-            <a href="website-new.html" class="navbar-brand">
+            <a href="page-new.html" class="navbar-brand">
                 <span class="glyphicon glyphicon-chevron-left hidden-sm-up pull-left"></span>
             </a>
-            <a class="navbar-brand" href="#" style="padding-left:0">New Website</a>
-            <a href="website-new.html">
+            <a class="navbar-brand" href="#" style="padding-left:0">Edit page</a>
+            <a href="page-new.html">
                 <span class="glyphicon glyphicon-ok pull-right navbar-brand"></span>
             </a>
         </div>
@@ -36,46 +36,45 @@
 
 <div class="row" style="margin:0; padding:0">
     <div class="col-sm-4 hidden-xs">
-        <p>Address book App
+        <p>Blog post
             <a href="#">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </p>
-        <p>Calender Website
+        <p>All blogs
             <a href="#">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </p>
-        <p>News Blog
+        <p>Contact Us
             <a href="#">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </p>
-        <p>Travel West
+        <p>About
             <a href="#">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </p>
     </div>
-
     <div class="col-sm-8">
         <form>
             <div class="form-group">
                 <label for="site-name">Name</label>
-                <input type="text" class="form-control input-lg" id="site-name" placeholder="Gizmodo">
+                <input type="text" class="form-control input-lg" id="site-name" value="Gizmodo">
             </div>
             <div class="form-group">
-                <label for="site-txt">Text</label>
-                <textarea class="form-control input-lg" rows="4" id="site-txt" placeholder="Here's a description."></textarea>
+                <label for="site-title">Title</label>
+                <input type="text" class="form-control input-lg" id="site-title" value="The big headline">
             </div>
     </div>
 </div>
 
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
-            <a href="#" class="navbar-link">
-                <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
-            </a>
+        <a href="#" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
+        </a>
     </div>
 </nav>
 </body>
