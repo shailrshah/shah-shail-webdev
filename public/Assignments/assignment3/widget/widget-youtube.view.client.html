@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Youtube Widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left">
+                <a href="widget-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <a class="navbar-brand" href="#">Edit Widget</a>
+            <div class="navbar-text pull-right hidden-sm-plus">
+                <a href="widget-list.view.client.html">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="img-name">Name</label>
+            <input type="text" class="form-control input-lg" id="img-name">
+        </div>
+        <div class="form-group">
+            <label for="img-txt">Text</label>
+            <input type="text" class="form-control input-lg" id="img-txt">
+        </div>
+
+        <label for="basic-url">URL</label>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3">http://</span>
+            <input type="text" class="form-control input-lg" id="basic-url" value="youtu.be/CB1Pukr0nFQ">
+        </div>
+        <div class="form-group">
+            <label for="points"><br>Width</label>
+            <input type="range" class="form-control input-lg" value = "100" id="points" min="0" max="100" step="25">
+        </div>
+        <a class="btn btn-danger btn-lg btn-block"
+           href="widget-list.view.client.html">Delete</a>
+
+    </form>
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="../user/profile.view.client.html" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
+        </a>
+    </div>
+</nav>
+
+</body>
+</html>
