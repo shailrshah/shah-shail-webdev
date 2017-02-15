@@ -12,10 +12,12 @@
             })
             .when("/register", {
                 templateUrl: "user/register.view.client.html",
+                controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/profile", {
+            .when("/user/:uid", {
                 templateUrl: "user/profile.view.client.html",
+                controller: "ProfileController",
                 controllerAs: "model"
             })
 
@@ -65,6 +67,8 @@
                 templateUrl: "widget/widget-youtube.view.client.html",
                 controllerAs: "model"
             })
+
+            .otherwise({redirectTo : '/login'})
 
 
 

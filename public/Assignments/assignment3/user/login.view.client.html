@@ -1,9 +1,15 @@
 <div class="container-fluid">
     <h1>Login</h1>
-    <p>{{model.hello}}</p>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        <span class="sr-only">Error:</span>
+        {{model.error}}
+    </div>
+
     <form>
     <p><label class="sr-only" for="username">username</label>
-        <input ng-model="user.username"
+        <input required="true"
+               ng-model="user.username"
                class="form-control input-lg"
                type="text"
                placeholder="username"
@@ -14,7 +20,7 @@
                class="form-control input-lg"
                type="password"
                placeholder="password"
-               id="password"></p>
+               id="password" required></p>
 
     <p>
         <a ng-click="model.login(user)"
