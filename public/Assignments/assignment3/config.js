@@ -6,32 +6,35 @@
     function configuration($routeProvider){
         $routeProvider
             .when("/login", {
-                templateUrl: "user/login.view.client.html",
+                templateUrl: "user/templates/login.view.client.html",
                 controller: "LoginController",
                 controllerAs: "model"
             })
             .when("/register", {
-                templateUrl: "user/register.view.client.html",
+                templateUrl: "user/templates/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
             .when("/user/:uid", {
-                templateUrl: "user/profile.view.client.html",
+                templateUrl: "user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
             })
 
             .when("/user/:uid/websites", {
-                templateUrl: "website/website-list.view.client.html",
-                controller: "WebsiteController",
+                templateUrl: "website/templates/website-list.view.client.html",
+                controller: "WebsiteListController",
                 controllerAs: "model"
             })
-            .when("/website-new", {
-                templateUrl: "website/website-new.view.client.html",
+
+            .when("/user/:uid/websites/new", {
+                templateUrl: "website/templates/website-new.view.client.html",
+                controller: "WebsiteNewController",
                 controllerAs: "model"
             })
-            .when("/website-edit", {
-                templateUrl: "website/website-edit.view.client.html",
+            .when("/user/:uid/websites/:wid", {
+                templateUrl: "website/templates/website-edit.view.client.html",
+                controller: "WebsiteEditController",
                 controllerAs: "model"
             })
 
@@ -71,8 +74,6 @@
 
 
             .otherwise({redirectTo : '/login'})
-
-
 
     }
 })();

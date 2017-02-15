@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <a class="navbar-brand" href="#">Website List</a>
+            <div class="navbar-text pull-right hidden-sm-plus">
+                <a href="#/user/{{model.userId}}/websites/new">
+                    <span class="glyphicon glyphicon-plus lil-margin"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                Name
+            </div>
+            <ul class="list-group">
+                <li ng-repeat="w in model.websites" class="list-group-item">
+                    <a href="#/pages">
+                        {{w.name}}
+                    </a>
+                    <a href="#/user/{{w.developerId}}/websites/{{w._id}}" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/user/{{model.userId}}" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand lil-margin"></span>
+        </a>
+    </div>
+</nav>
