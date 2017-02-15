@@ -67,14 +67,22 @@
         </form>
 
         <a class="btn btn-lg btn-primary btn-block"
-           href="#/websites">Websites</a>
-        <a class="btn btn-lg btn-danger  btn-block"
+           href="#/user/{{model.user._id}}/websites">Websites</a>
+
+
+
+        <a class="btn btn-lg btn-warning  btn-block"
            href="#/login">Logout</a>
+
+        <a ng-click="model.del(model.user._id)"
+            class="btn btn-lg btn-danger  btn-block">
+            Delete Account
+        </a>
     </div>
 
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
-        <a ngclick="$location" class="navbar-link">
+        <a href="#/user/{{model.user._id}}" class="navbar-link">
             <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
         </a>
     </div>

@@ -120,14 +120,16 @@
         }
 
         function deleteUser(id){
-            for (var u in users) {
-                var user = users[u];
+            console.log("Service started.")
+            for (var i in users) {
+                var user = users[i];
                 if (user._id === id){
-                    users.splice(u, 1);
+                    users.splice(i, 1);
                     console.log("Removed user");
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
     }
 })();

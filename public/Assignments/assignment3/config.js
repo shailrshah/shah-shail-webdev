@@ -21,8 +21,9 @@
                 controllerAs: "model"
             })
 
-            .when("/websites", {
+            .when("/user/:uid/websites", {
                 templateUrl: "website/website-list.view.client.html",
+                controller: "WebsiteController",
                 controllerAs: "model"
             })
             .when("/website-new", {
@@ -67,6 +68,7 @@
                 templateUrl: "widget/widget-youtube.view.client.html",
                 controllerAs: "model"
             })
+
 
             .otherwise({redirectTo : '/login'})
 

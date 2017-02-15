@@ -3,9 +3,10 @@
         .module("WebAppMaker")
         .controller("ProfileController", profileController);
 
-    function profileController($routeParams, UserService){
+    function profileController($routeParams, UserService, $location){
         var vm = this;
         vm.update = update;
+        vm.del = del;
 
         function init(){
             console.log("Initializing ProfileController");
@@ -27,6 +28,14 @@
             else {
                 vm.error="The user wasn't found";
                 console.log(vm.error);
+            }
+        }
+
+        function del (uid){
+            console.log("Trying to delete");
+            if(UserService.deleteUser(uid)){
+                console.log("Deleted");
+                $location.url("/#login");
             }
         }
     }
