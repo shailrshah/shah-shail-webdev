@@ -5,11 +5,23 @@
 
     function configuration($routeProvider){
         $routeProvider
+            .when("/user/:uid/websites/:wid/pages/:pid/widgets",{
+                templateUrl: "widget/templates/widget-list.view.client.html",
+                controller: "WidgetListController",
+                controllerAs: "model"
+            })
+
             .when("/login", {
                 templateUrl: "user/templates/login.view.client.html",
                 controller: "LoginController",
                 controllerAs: "model"
             })
+            .when("/", {
+                templateUrl: "user/templates/login.view.client.html",
+                controller: "LoginController",
+                controllerAs: "model"
+            })
+
             .when("/register", {
                 templateUrl: "user/templates/register.view.client.html",
                 controller: "RegisterController",
@@ -38,23 +50,6 @@
                 controllerAs: "model"
             })
 
-            .when("/pages", {
-                templateUrl: "page/page-list.view.client.html",
-                controllerAs: "model"
-            })
-            .when("/page-new", {
-                templateUrl: "page/page-new.view.client.html",
-                controllerAs: "model"
-            })
-            .when("/page-edit", {
-                templateUrl: "page/page-edit.view.client.html",
-                controllerAs: "model"
-            })
-
-            .when("/widgets",{
-                templateUrl: "widget/widget-list.view.client.html",
-                controllerAs: "model"
-            })
             .when("/widget-chooser",{
                 templateUrl: "widget/widget-chooser.view.client.html",
                 controllerAs: "model"
@@ -73,7 +68,7 @@
             })
 
 
-            .otherwise({redirectTo : '/login'})
+            // .otherwise({redirectTo : '/login'})
 
     }
 })();

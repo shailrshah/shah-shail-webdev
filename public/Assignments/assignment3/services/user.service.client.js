@@ -45,7 +45,6 @@
             "getUserByUsername": getUserByUsername,
             "authenticate": authenticate,
             "updateUserById": updateUserById,
-            "createUser": createUser,
             "deleteUser": deleteUser
         };
         return api;
@@ -99,7 +98,7 @@
         }
 
         function createUser(user) {
-            var id=(new Date()).getTime().toString();
+            var id=(new Date()).getTime();
             var newUser = {_id: id, username: user.username, password: user.password1,
                             firstName: user.firstName, lastName: user.lastName , email: user.email}
             users.push(newUser);
