@@ -53,11 +53,9 @@
             for (var u in users) {
                 var user = users[u];
                 if (user.username === name && user.password == pass) {
-                    console.log("Combination found.");
                     return user._id;    // _id uniquely identifies the user.
                 }                       // not returning entire object. Might be unsecure!
             }
-            console.log("Combination not found.");
             return null;
         }
 
@@ -65,44 +63,32 @@
             for (var u in users) {
                 var user = users[u];
                 if (user._id === id) {
-                    console.log("User details found");
-                    var userInfo = {
-                        _id: user._id, username: user.username, email: user.email,
-                        firstName: user.firstName, lastName: user.lastName
-                    };
-                    console.log(userInfo);
-                    return userInfo;            //I don't want to return password!
+                    var info = angular.copy(user);
+                    delete info.password; //don't want the asker to get the password
+                    return info;
                 }
             }
             return null;
         }
 
         function updateUserById(id, updateduser) {
-            console.log("Trying to search for "+id)
-            console.log(updateduser);
             for (var u in users) {
                 var user = users[u];
                 if (user._id === id) {
-                    console.log("User details found");
                     user.username = updateduser.username;
                     user.email = updateduser.email;
                     user.firstName = updateduser.firstName;
                     user.lastName = updateduser.lastName;
-
-                    console.log("User found. Details Updated");
                     return true;
                 }
             }
-            console.log("User not found");
             return false;
         }
 
-        function createUser(user) {
-            var id=(new Date()).getTime();
-            var newUser = {_id: id, username: user.username, password: user.password1,
-                            firstName: user.firstName, lastName: user.lastName , email: user.email}
+        function createUser(newUser) {
+            var id=(new Date()).getTime().toString();
+            newUser._id = id;
             users.push(newUser);
-            console.log(users);
             return id;
         }
 
@@ -115,7 +101,7 @@
                     return user;
                 }
             }
-            return null;
+            return false;
         }
 
         function deleteUser(id){

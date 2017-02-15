@@ -23,45 +23,48 @@
 
         function findWebsiteById(wid) {
             for(var w in websites) {
-                if(websites[w]._id === wid) {
+                var website = websites[w];
+                if(website._id === wid) {
                     return angular.copy(websites[w]);
                 }
             }
-            console.log("Not found by id");
             return null;
         }
         function deleteWebsite(websiteId) {
             for(var w in websites) {
-                if(websites[w]._id === websiteId) {
+                var website = websites[w];
+                if(website._id === websiteId) {
                     websites.splice(w, 1);
+                    return true;
                 }
             }
+            return false;
         }
 
         function createWebsite(userId, website) {
-            console.log(websites);
             website.developerId = userId;
-            website._id = (new Date()).getTime();
+            website._id = (new Date()).getTime().toString();
             websites.push(website);
-            console.log(websites);
+            return websites;
         }
 
         function findAllWebsitesForUser(userId) {
             var sites = [];
             for(var w in websites) {
-                if(websites[w].developerId === userId) {
+                var website = websites[w];
+                if(website.developerId === userId) {
                     sites.push(websites[w]);
                 }
             }
             return sites;
         }
 
-        function updateWebsite(id,website1){
+        function updateWebsite(id, website1){
             for(var w in websites){
                 var website = websites[w];
                 if(website._id === id) {
-                    website.name= website1.name;
-                    website.description=website1.description;
+                    website.name = website1.name;
+                    website.description = website1.description;
                 }
             }
         }

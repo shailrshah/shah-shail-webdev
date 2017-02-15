@@ -36,20 +36,21 @@
             return wid;
         }
 
-        function createWidget(pageId, widget){
+        function createWidget(pageId, newWidget){
             var id = (new Date()).getTime().toString();
-            widgets.push({"_id":id, "widgetType":widget, "pageId":pageId});
+            newWidget.id = id;
+            newWidget.pageId = pageId;
+            widgets.push(newWidget);
             return id;
         }
 
         function findWidgetById(id){
             for (var w in widgets){
                 var widget = widgets[w];
-                if (widgets._id===id){
+                if (widget._id===id){
                     return widget;
                 }
             }
-            console.log("Not found.");
             return null;
         }
 
@@ -58,14 +59,16 @@
                 var widget = widgets[w];
                 if (widget._id === id) {
                     widgets.splice(w, 1);
+                    return true;
                 }
             }
+            return false;
         }
 
         function updateWidget(id, widget1){
             for(var w in widgets){
                 var widget = widgets[w];
-                if(widget._id === id){
+                if(widget._id === id){ //I will try angular.copy() later
                     if(widget.widgetType == "HEADER"){
                         widget.size = widget1.size;
                         widget.text = widget1.text;

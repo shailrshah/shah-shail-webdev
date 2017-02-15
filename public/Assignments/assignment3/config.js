@@ -5,9 +5,39 @@
 
     function configuration($routeProvider){
         $routeProvider
+
+            .when("/user/:uid/websites/:wid/pages/:pid/widgets/new",{
+                templateUrl: "widget/templates/widget-chooser.view.client.html",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/websites/:wid/pages/:pid/widgets/:wgid",{
+                templateUrl: "widget/templates/widget-edit.view.client.html",
+                controller: "WidgetEditController",
+                controllerAs: "model"
+            })
+
             .when("/user/:uid/websites/:wid/pages/:pid/widgets",{
                 templateUrl: "widget/templates/widget-list.view.client.html",
                 controller: "WidgetListController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/websites/:wid/pages/", {
+                templateUrl: "page/templates/page-list.view.client.html",
+                controller: "PageListController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/websites/:wid/pages/new",{
+                templateUrl: "page/templates/page-new.view.client.html",
+                controller: "PageNewController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/websites/:wid/pages/:pid",{
+                templateUrl: "page/templates/page-edit.view.client.html",
+                controller: "PageEditController",
                 controllerAs: "model"
             })
 
@@ -47,23 +77,6 @@
             .when("/user/:uid/websites/:wid", {
                 templateUrl: "website/templates/website-edit.view.client.html",
                 controller: "WebsiteEditController",
-                controllerAs: "model"
-            })
-
-            .when("/widget-chooser",{
-                templateUrl: "widget/widget-chooser.view.client.html",
-                controllerAs: "model"
-            })
-            .when("/widget-image",{
-                templateUrl: "widget/widget-image.view.client.html",
-                controllerAs: "model"
-            })
-            .when("/widget-heading",{
-                templateUrl: "widget/widget-heading.view.client.html",
-                controllerAs: "model"
-            })
-            .when("/widget-youtube",{
-                templateUrl: "widget/widget-youtube.view.client.html",
                 controllerAs: "model"
             })
 

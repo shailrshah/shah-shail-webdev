@@ -1,35 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Pages</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
-        <div class="col-sm-12">
+        <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="../website/templates/website-list.view.client.html">
+                <a href="page-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
-            <a class="navbar-brand" href="#">Pages List</a>
-            <div class="navbar-text pull-right hidden-sm-plus">
-                <a href="page-new.view.client.html">
-                    <span class="glyphicon glyphicon-plus lil-margin"></span>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">pages</a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a href="page-list.view.client.html">
+                    <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left visible-xs">
+                <a href="page-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <a class="navbar-brand" href="#">Edit page</a>
+            <div class="navbar-text pull-right hidden-sm-plus">
+                <a href="page-list.view.client.html">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+
 
         </div>
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div class="col-sm-12">
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs wbdv-left-pane">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">
@@ -37,7 +42,7 @@
             </div>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         Blog
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -45,7 +50,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         About Us
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -53,7 +58,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         Contact Us
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -61,7 +66,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         News
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -69,7 +74,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         Register
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -77,7 +82,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="../widget/templates/widget-list.view.client.html">
+                    <a href="../../widget/templates/widget-list.view.client.html">
                         Login
                     </a>
                     <a href="page-edit.view.client.html" class="pull-right">
@@ -88,16 +93,26 @@
         </div>
 
     </div>
+    <div class="col-xs-12 col-sm-8 wbdv-right-pane">
 
+        <label for="name">Page Name</label>
+        <input class="form-control input-lg" id="name" value="About us">
 
+        <label for="title">Title</label>
+        <input class="form-control input-lg" id="title" value="Connect with us!">
+
+        <a href="page-list.view.client.html"
+           class="btn btn-danger btn-lg btn-block">
+            Delete
+        </a>
+    </div>
 </div>
+
 
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
-        <a href="../user/templates/profile.view.client.html" class="navbar-link">
-            <span class="glyphicon glyphicon-user pull-right navbar-brand lil-margin"></span>
+        <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
         </a>
     </div>
 </nav>
-</body>
-</html>
