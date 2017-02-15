@@ -2,7 +2,7 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/websites/">
+                <a href="#/user/{{model.userId}}/websites">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="#/websites">
+                <a href="#/user/{{model.userId}}/websites">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -54,7 +54,6 @@
 
     </div>
     <div class="col-xs-12 col-sm-8 wbdv-right-pane">
-
         <label for="wname">Website Name</label>
         <input ng-model="model.website.name"
                class="form-control input-lg" i
