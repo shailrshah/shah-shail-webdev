@@ -1,19 +1,20 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("PageListController", "pageListController");
+        .controller("PagesController", pagesController);
 
-    function pageListController($routeParams, PageService){
-        var vm = this;
-        vm.userId = $routeParams.uid;
-        vm.websiteId = $routeParams.wid;
+    function pagesController(PageService, $location, $routeParams){
+        var vm = this;       //the controller's instance, containing info about view
+
+        vm.userId=$routeParams.uid;
 
         function init(){
+            vm.websiteId=$routeParams.wid;
+            console.log(vm.websiteId);
             vm.pages = PageService.findPageByWebsite(vm.websiteId);
-            console.log(pages);
+            console.log(vm.pages);
         }
         init();
-
-
     }
+
 })();

@@ -25,7 +25,7 @@
 
             .when("/user/:uid/websites/:wid/pages/", {
                 templateUrl: "page/templates/page-list.view.client.html",
-                controller: "PageListController",
+                controller: "PagesController",
                 controllerAs: "model"
             })
 

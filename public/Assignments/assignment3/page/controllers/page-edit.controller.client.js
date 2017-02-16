@@ -1,21 +1,50 @@
+// (function(){
+//     angular
+//         .module("WebAppMaker")
+//         .controller("PageEditController", pageEditController);
+//
+//     function pageEditController(PageService, $location, $routeParams){
+//         var vm = this;       //the controller's instance, containing info about view
+//
+//         vm.userId=$routeParams.uid;
+//         vm.websiteId=$routeParams.wid;
+//         vm.pageId=$routeParams.pid;
+//
+//         //Event Handler
+//         vm.update = update;
+//         vm.del = del;
+//
+//         function init(){
+//             vm.page = PageService.findPageById(vm.pageId);
+//         }
+//         init();
+//
+//         function update(){
+//
+//         }
+//
+//         function del(){
+//
+//         }
+//     }
+// })();
+
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("PageEditController", "pageEditController");
+        .controller("PageEditController", pageEditController);
 
-    function pageEditController($routeParams, PageService){
-        var vm = this;
-        vm.userId = $routeParams.uid;
-        vm.websiteId = $routeParams.wid;
-        vm.pageId = $routeParams.pid;
+    function pageEditController(PageService, $location, $routeParams){
+        var vm = this;       //the controller's instance, containing info about view
 
-        vm.page = PageService.findPageById(vm.pageId);
+        vm.userId=$routeParams.uid;
+        vm.pageId=$routeParams.pid;
 
-        vm.editPage = editPage;
-        vm.deletePage = deletePage;
-
-        function editPage(id, page1){
-            console.log("")
+        function init(){
+            vm.websiteId=$routeParams.wid;
+            vm.pages = PageService.findPageByWebsite(vm.websiteId);
         }
+        init();
     }
+
 })();

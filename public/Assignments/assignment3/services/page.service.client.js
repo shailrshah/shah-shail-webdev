@@ -8,7 +8,7 @@
             { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
             { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
             { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ]
+        ];
         var api = {
             "createPage": createPage,
             "findPageById": findPageById,
@@ -31,7 +31,7 @@
         function deletePage(pageId) {
             for(var p in pages) {
                 var page = pages[p];
-                if(pages._id === pageId) {
+                if(page._id === pageId) {
                     pages.splice(p, 1);
                     return true;
                 }
@@ -46,15 +46,15 @@
             return page_.id;
         }
 
-        function findPageByWebsite(wid) {
-            var ps = [];
-            for(var p in pages) {
-                var pages = pages[p];
-                if(page.websiteId === wid) {
-                    ps.push(pages[p]);
+        function findPageByWebsite(websiteId) {
+            var pgs=[];
+            for(p in pages){
+                page = pages[p];
+                if(page.websiteId===websiteId){
+                    pgs.push(page);
                 }
             }
-            return ps;
+            return pgs;
         }
 
         function updatePage(id,page1){
