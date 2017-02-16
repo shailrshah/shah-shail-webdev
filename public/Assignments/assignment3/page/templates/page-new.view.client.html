@@ -2,32 +2,26 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="page-list.view.client.html">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">pages</a>
+                <span class="navbar-brand">pages</span>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="page-list.view.client.html">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
-            <a class="navbar-brand" href="#">New page</a>
-            <div class="navbar-text pull-right hidden-sm-plus">
-                <a href="page-list.view.client.html">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
-            </div>
-
+            <span class="navbar-brand">Add page</span>
 
         </div>
     </div>
@@ -41,72 +35,41 @@
                 Name
             </div>
             <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        Blog
+                <li ng-repeat="p in model.pages" class="list-group-item">
+                    <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{p._id}}/widgets">
+                        {{p.name}}
                     </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        About Us
-                    </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        Contact Us
-                    </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        News
-                    </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        Register
-                    </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="../../widget/templates/widget-list.view.client.html">
-                        Login
-                    </a>
-                    <a href="page-edit.view.client.html" class="pull-right">
+                    <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{p._id}}" class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </li>
             </ul>
         </div>
-
     </div>
     <div class="col-xs-12 col-sm-8 wbdv-right-pane">
-
+        {{model.message}}
         <label for="name">Page Name</label>
-        <input class="form-control input-lg" id="name" placeholder="Page Name">
+        <input ng-model="model.page.name"
+               class="form-control input-lg"
+               id="name"
+               value="About us">
 
-        <label for="title">Title</label>
-        <input class="form-control input-lg" id="title" placeholder="Page Title">
+        <label for="title">Description</label>
+        <input ng-model = "model.page.description"
+               class="form-control input-lg"
+               id="title"
+               value="Connect with us!">
+        <a ng-click="model.createPage()"
+           class="btn btn-primary btn-lg btn-block">
+            Create
+        </a>
     </div>
 </div>
 
-
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
-        <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+        <a href="#/user/{{model.userId}}" class="navbar-link">
             <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
         </a>
     </div>
+</nav>

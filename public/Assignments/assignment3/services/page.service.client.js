@@ -31,19 +31,24 @@
         function deletePage(pageId) {
             for(var p in pages) {
                 var page = pages[p];
-                if(page._id === pageId) {
+                console.log(pageId+" "+page._id);
+                if(page._id == pageId) {
                     pages.splice(p, 1);
+                    console.log("Deleted");
                     return true;
+
                 }
             }
+            console.log("Not deleted");
             return false;
         }
         
-        function createPage(userId, page){
-            page.developerId = userId;
+        function createPage(websiteId, page){
+            console.log("got page");
+            page.websiteId = websiteId;
             page._id = (new Date()).getTime().toString();
+            console.log(page);
             pages.push(page);
-            return page_.id;
         }
 
         function findPageByWebsite(websiteId) {
