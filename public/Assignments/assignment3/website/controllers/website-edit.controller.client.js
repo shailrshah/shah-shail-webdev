@@ -22,6 +22,7 @@
 
         function updateWebsite(){
             WebsiteService.updateWebsite(vm.websiteId, vm.website);
+            $location.url("/user/"+vm.userId+"/websites");
         };
 
         function deleteWebsite () {

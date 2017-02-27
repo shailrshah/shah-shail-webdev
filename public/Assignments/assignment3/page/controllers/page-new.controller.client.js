@@ -16,9 +16,9 @@
         init();
 
         function createPage() {
-            console.log(vm.page);
             PageService.createPage(vm.websiteId, angular.copy(vm.page));
             vm.pages=PageService.findPageByWebsite(vm.websiteId);
+            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages");
         }
     }
 })();

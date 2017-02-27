@@ -2,7 +2,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-text pull-left">
-                <a href="../../page/templates/page-list.view.client.html">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -27,30 +27,17 @@
 
             <div ng-switch="widget.widgetType">
                 <div ng-switch-when="HEADING">
-                    <div ng-switch="widget.size">
-                        <h1 ng-switch-when="1">{{widget.text}} {{widget.size}}</h1>
-                        <h2 ng-switch-when="2">{{widget.text}} {{widget.size}}</h2>
-                        <h3 ng-switch-when="3">{{widget.text}} {{widget.size}}</h3>
-                        <h4 ng-switch-when="4">{{widget.text}} {{widget.size}}</h4>
-                        <h5 ng-switch-when="5">{{widget.text}} {{widget.size}}</h5>
-                        <h6 ng-switch-when="6">{{widget.text}} {{widget.size}}</h6>
-                    </div>
+                    <ng-include src="'widget/templates/widget-HEADER.view.client.html'"></ng-include>
                 </div>
-
-                <div ng-switch-when="HTML">
-                    <div ng-bind-html="model.getTrustedHtml(widget.text)"></div>
-                </div>
-
                 <div ng-switch-when="IMAGE">
-                    <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
+                    <ng-include src="'widget/templates/widget-IMAGE.view.client.html'"></ng-include>
                 </div>
-
+                <div ng-switch-when="HTML">
+                    <ng-include src="'widget/templates/widget-HTML.view.client.html'"></ng-include>
+                </div>
                 <div ng-switch-when="YOUTUBE">
-                    <div class="yt-container">
-                        <iframe ng-src="{{model.trustVideo(widget.url)}}" frameborder="0" allowfullscreen></iframe>
-                    </div>
+                    <ng-include src="'widget/templates/widget-YOUTUBE.view.client.html'"></ng-include>
                 </div>
-
             </div>
         </div>
         </div>

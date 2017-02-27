@@ -21,7 +21,7 @@
 
         function update(){
             PageService.updatePage(vm.pageId, vm.page);
-            console.log(vm.page);
+            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages");
         }
 
         function del(){
