@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("UserService", userService);
 
-    function userService() {
+    function userService($http) {
         var users = [
             {
                 _id: "123",
@@ -50,13 +50,15 @@
         return api;
 
         function authenticate(name, pass) {
-            for (var u in users) {
-                var user = users[u];
-                if (user.username === name && user.password == pass) {
-                    return user._id;    // _id uniquely identifies the user.
-                }                       // not returning entire object. Might be unsecure!
-            }
-            return null;
+            // for (var u in users) {
+            //     var user = users[u];
+            //     if (user.username === name && user.password == pass) {
+            //         return user._id;    // _id uniquely identifies the user.
+            //     }                       // not returning entire object. Might be unsecure!
+            // }
+            // return null;
+
+            return $http.get("/api/user?username="+name+"&password="+pass);
         }
 
         function getUserById(id) {
