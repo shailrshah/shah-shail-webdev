@@ -62,15 +62,17 @@
         }
 
         function getUserById(id) {
-            for (var u in users) {
-                var user = users[u];
-                if (user._id === id) {
-                    var info = angular.copy(user);
-                    delete info.password; //don't want the asker to get the password
-                    return info;
-                }
-            }
-            return null;
+            // for (var u in users) {
+            //     var user = users[u];
+            //     if (user._id === id) {
+            //         var info = angular.copy(user);
+            //         delete info.password; //don't want the asker to get the password
+            //         return info;
+            //     }
+            // }
+            // return null;
+
+            return $http.get("/api/user/"+id);
         }
 
         function updateUserById(id, updateduser) {
