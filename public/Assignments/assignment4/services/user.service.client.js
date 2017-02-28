@@ -75,18 +75,20 @@
             return $http.get("/api/user/"+id);
         }
 
-        function updateUserById(id, updateduser) {
-            for (var u in users) {
-                var user = users[u];
-                if (user._id === id) {
-                    user.username = updateduser.username;
-                    user.email = updateduser.email;
-                    user.firstName = updateduser.firstName;
-                    user.lastName = updateduser.lastName;
-                    return true;
-                }
-            }
-            return false;
+        function updateUserById(id, updatedUser) {
+            // for (var u in users) {
+            //     var user = users[u];
+            //     if (user._id === id) {
+            //         user.username = updateduser.username;
+            //         user.email = updateduser.email;
+            //         user.firstName = updateduser.firstName;
+            //         user.lastName = updateduser.lastName;
+            //         return true;
+            //     }
+            // }
+            // return false;
+
+            return $http.put("/api/user/"+id, updatedUser);
         }
 
         function createUser(newUser) {

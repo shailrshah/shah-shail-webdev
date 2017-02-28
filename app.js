@@ -10,6 +10,7 @@ module.exports = function(app){
 
     app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
+    app.put("/api/user/:userId", updateUserById);
 
     function findUserByCredentials(req, res){
         var username = req.query.username;
@@ -26,7 +27,26 @@ module.exports = function(app){
         var userId = req.params.userId;
         var user = users.find(function(u){
             return u._id == userId;
-        })
+        });
+        res.json(user);
+    }
+
+    function updateUserById(req, res){
+        var userId = req.params.userId;
+        var upuser = req.body;
+
+        for(var u in users) {
+            if( users[u]._id == userId ) {
+                console.log(users[u]);
+                users[u].firstName = upuser.firstName;
+                users[u].lastName = upuser.lastName;
+                users[u].email=upuser.email;
+                users[u].username=upuser.username;
+                res.json(users[u]);
+                return;
+            }
+        }
+
         res.json(user);
     }
 }

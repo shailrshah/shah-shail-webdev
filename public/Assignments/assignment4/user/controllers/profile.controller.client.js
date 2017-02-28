@@ -14,18 +14,21 @@
 
             promise.success(function(user){
                 vm.user = user;
+                vm.updateduser=angular.copy(vm.user);
+                console.log(vm.user);
             });
-            vm.updateduser=angular.copy(vm.user);
         }
         init();
 
         function update(uid, user){
-            if(UserService.updateUserById(uid, user)){
-                vm.message="Your profile has been updated"
-            }
-            else {
-                vm.error="The user wasn't found";
-            }
+            UserService
+                .updateUserById(uid, user)
+                .success(function(user){
+                    if(user != null)
+                        vm.message="Your profile has been updated"
+                    else
+                        vm.error="The user wasn't found";
+                });
         }
 
         function del (uid){
