@@ -36,10 +36,10 @@
             return wid;
         }
 
-        function createWidget(pageId, newWidget){
+        function createWidget(pageId, type){
             var id = (new Date()).getTime().toString();
-            newWidget.id = id;
-            newWidget.pageId = pageId;
+            var newWidget = {"_id": id, "pageId":pageId, "widgetType":type};
+            console.log(newWidget);
             widgets.push(newWidget);
             return id;
         }

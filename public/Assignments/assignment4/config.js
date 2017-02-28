@@ -8,6 +8,7 @@
 
             .when("/user/:uid/websites/:wid/pages/:pid/widgets/new",{
                 templateUrl: "widget/templates/widget-chooser.view.client.html",
+                controller: "WidgetNewController",
                 controllerAs: "model"
             })
 

@@ -1,29 +1,29 @@
-<div class="container-fluid">
-    <form>
-        <div class="form-group">
-            <label for="img-name">Name</label>
-            <input type="text" class="form-control input-lg" id="img-name">
-        </div>
-        <div class="form-group">
-            <label for="img-txt">Text</label>
-            <input type="text" class="form-control input-lg" id="img-txt">
-        </div>
+<form>
+    <div class="form-group">
+        <label for="y_name">Name</label>
+        <input type="text" class="form-control" id="y_name"
+               ng-model="model.widget.name">
+    </div>
 
-        <label for="basic-url">URL</label>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon3">http://</span>
-            <input type="text" class="form-control input-lg" id="basic-url" value="youtu.be/CB1Pukr0nFQ">
-        </div>
-        <div class="form-group">
-            <label for="points"><br>Width</label>
-            <input type="range" class="form-control input-lg" value = "100" id="points" min="0" max="100" step="25">
-        </div>
-        <a class="btn btn-danger btn-lg btn-block"
-           ng-click="model.del()">Delete</a>
+    <div class="form-group">
+        <label for="y_text">Text</label>
+        <input type="text" id="y_text" class="form-control"
+               ng-model="model.widget.text">
+    </div>
 
-        <a class="btn btn-success btn-lg btn-block"
-           ng-click="model.update()">Update</a>
+    <div class="form-group">
+        <label for="y_url">URL</label>
+        <input type="text" id="y_url" class="form-control"
+               ng-model="model.widget.url">
+    </div>
 
-    </form>
-</div>
+    <div class="form-group">
+        <label for="y_width">Width</label>
+        <input type="text" id="y_width" class="form-control" ng-model="model.widget.width">
+    </div>
+</form>
+<a class="btn btn-block btn-success topp"
+   ng-click="model.update()">Update</a>
 
+<a class="btn btn-block btn-danger topp"
+   ng-click="model.del()">Delete</a>

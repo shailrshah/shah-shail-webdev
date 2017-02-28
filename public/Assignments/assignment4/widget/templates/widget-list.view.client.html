@@ -8,7 +8,7 @@
             </div>
             <a class="navbar-brand" href="#">Widget List</a>
             <div class="navbar-text pull-right hidden-sm-plus">
-                <a href="widget-chooser.view.client.html">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -29,7 +29,7 @@
 
             <div ng-switch="widget.widgetType">
                 <div ng-switch-when="HEADING">
-                    <ng-include src="'widget/templates/widget-HEADER.view.client.html'"></ng-include>
+                    <ng-include src="'widget/templates/widget-HEADING.view.client.html'"></ng-include>
                 </div>
                 <div ng-switch-when="IMAGE">
                     <ng-include src="'widget/templates/widget-IMAGE.view.client.html'"></ng-include>
