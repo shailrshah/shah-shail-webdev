@@ -31,11 +31,17 @@
                 });
         }
 
-        function del (uid){
-            if(UserService.deleteUser(uid)){
-                $location.url("/#login");
+        function del (user){
+            if(confirm("Do you really want to delete your profile?")){
+                UserService
+                    .deleteUser(user._id)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error = 'unable to remove user';
+                    });
             }
-            else vm.error = "An error occured. Counldn't find your username";
         }
     }
 })();

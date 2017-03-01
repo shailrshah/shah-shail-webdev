@@ -13,16 +13,17 @@
         init();
 
         function register(user){
-            if(UserService.getUserByUsername(user.username)){
-                vm.error="Already exists!"
-                return;                                 //can add some jQuery validation later
-            } else if(user.password1!=user.password2){
-                vm.error="Passwords don't match";
-                return;
-            } else{
-                var id  = UserService.createUser(user);
-                $location.url("/user/"+id);
-            }
+            console.log(user);
+            UserService
+                .getUserByUsername(user.username)
+                .success(function(u){
+                    if(u){
+                        vm.error = "Already Exists!";
+                        return;
+                    } else {
+                        $location.url("/user/"+id);
+                    }
+                });
         }
     }
 })();
