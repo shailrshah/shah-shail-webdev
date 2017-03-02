@@ -34,7 +34,6 @@
         }
 
         function del(){
-            console.log("Trying")
             PageService.deletePage(vm.pageId);
             $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages");
         }

@@ -32,9 +32,8 @@ module.exports = function (app) {
         var user_id = req.params.userId;
         var sites = [];
         for (var w in websites) {
-            if (websites[w].developerId === user_id) {
+            if (websites[w].developerId === user_id)
                 sites.push(websites[w]);
-            }
         }
         res.json(sites);
     }

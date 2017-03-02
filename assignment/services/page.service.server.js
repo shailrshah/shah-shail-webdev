@@ -26,9 +26,8 @@ module.exports = function (app) {
         var websiteId = req.params.websiteId;
         var pagesg = [];
         for(var p in pages) {
-            if(pages[p].websiteId === websiteId) {
+            if(pages[p].websiteId === websiteId)
                 pagesg.push(pages[p]);
-            }
         }
         res.json(pagesg);
     }
@@ -36,9 +35,8 @@ module.exports = function (app) {
     function findPageById(req, res) {
         var pageId = req.params.pageId;
         for(var p in pages) {
-            if(pages[p]._id === pageId) {
+            if(pages[p]._id === pageId)
                 res.json(pages[p]);
-            }
         }
         return;
     }
@@ -51,7 +49,6 @@ module.exports = function (app) {
                 pages[p].name = page.name;
                 pages[p].description = page.description;
                 res.sendStatus(200);
-
             }
         }
     }

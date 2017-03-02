@@ -1,5 +1,4 @@
 module.exports = function (app) {
-
     var multer = require('multer'); // npm install multer --save
     var storage=multer.diskStorage({
         destination: function (req,file,cb) {
@@ -21,7 +20,6 @@ module.exports = function (app) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/page/:pageId/widget", createWidget);
-
 
     var widgets = [
             {"_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -52,19 +50,16 @@ module.exports = function (app) {
             {"_id": "567567", "widgetType": "HTML", "pageId": "412", "text": "<p>Lorem ipsum</p>"}
         ];
 
-
     function createWidget(req,res) {
         var id = (new Date()).getTime().toString()
         var pageId=req.params.pageId;
         var widget=req.body;
         widget._id =id;
         widget.pageId = pageId.toString();
-
         widgets.push(widget);
         res.json(widget);
         return;
     }
-
 
     function createHeaderWidget(req, res) {
         var pageId = req.params.pageId;
@@ -76,8 +71,6 @@ module.exports = function (app) {
         widgets.push(widget);
         res.send(widget._id);
     }
-
-
 
     function findWidgetById(req, res) {
         var widgetId = req.params.widgetId;
@@ -105,7 +98,6 @@ module.exports = function (app) {
     function updateWidget(req, res) {
         var widgetId = req.params.widgetId;
         var widget = req.body
-
         for (var w in widgets) {
             if (widgets[w]._id == widgetId) {
                 widgets[w] = widget;
@@ -113,7 +105,6 @@ module.exports = function (app) {
                 res.send(widgets[w]);
             }
         }
-
     }
 
     function deleteWidget(req, res) {

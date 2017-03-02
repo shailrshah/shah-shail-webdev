@@ -5,6 +5,7 @@
 
    function widgetNewController($routeParams, WidgetService, $location){
        var vm = this;
+
        vm.create = create;
 
        function init(){

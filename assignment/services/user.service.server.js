@@ -13,41 +13,30 @@ module.exports = function (app) {
     ];
 
     function findUser(req, res) {
-        console.log("Finding user");
         var username = req.query.username;
         var password = req.query.password;
-        console.log(username);
-        console.log(password);
 
         if (username != null && password != null) {
-            console.log("logging in");
             findUserByCredentials(req, res);
         } else if (username) {
-            console.log("duplicate check");
             findUserByUsername(req, res);
         }
     }
 
     function createUser(req, res) {
-        console.log("New user request")
         var newUser = req.body;
         newUser._id = (new Date()).getTime() + "";
         users.push(newUser);
-        console.log("New user pushed: "+newUser);
         res.json(newUser);
     }
 
     function findUserByUsername(req, res) {
-        console.log("Finding user by username");
-        console.log(req.query.username+" end");
         var user = users.find(function (u) {
             return u.username == req.query.username;
         });
         if (user) {
             res.json(user);
-            console.log("User found: "+user);
         } else {
-            console.log("User not found");
             res.send(false);
         }
     }
@@ -55,11 +44,9 @@ module.exports = function (app) {
     function findUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        console.log("find user by credentials HTTP service");
         var user = users.find(function (user) {
             return user.password == password && user.username == username;
         });
-        console.log(user);
         res.json(user);
     }
 
@@ -77,7 +64,6 @@ module.exports = function (app) {
 
         for (var u in users) {
             if (users[u]._id == userId) {
-                console.log(users[u]);
                 users[u].firstName = upuser.firstName;
                 users[u].lastName = upuser.lastName;
                 users[u].email = upuser.email;

@@ -11,6 +11,7 @@
         function init(){
             vm.userId=$routeParams.uid;
             vm.websiteId=$routeParams.wid;
+
             PageService
                 .findPageByWebsite(vm.websiteId)
                 .then(function(pages){

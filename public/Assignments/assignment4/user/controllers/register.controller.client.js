@@ -12,15 +12,23 @@
         }
         init();
 
-        function register(user) {
-            var promise = UserService.createUser(user);
-            promise.then(function (user) {
-                vm.user = user.data;
-                if (vm.user != null)
-                    $location.url("/user/" + vm.user._id);
-                else
-                    vm.error("Registering failied");
-            })
+        function register(user2){
+            UserService
+                .getUserByUsername(user2.username)
+                .success(function(user1){
+                    if(user1===false){
+                        UserService
+                            .createUser(user2)
+                            .then(function (user3){
+                                vm.user = user3.data;
+                                if (vm.user != null)
+                                    $location.url("/user/" + vm.user._id);
+                                else
+                                    vm.error="Registering failied";
+                            })
+                    }
+                    else vm.error="already taken";
+                })
         }
     }
 })();

@@ -5,6 +5,7 @@
 
     function websiteListController($routeParams, WebsiteService) {
         var vm = this;
+
         function init() {
             vm.userId = $routeParams.uid;
             var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
