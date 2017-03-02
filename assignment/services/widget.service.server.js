@@ -118,8 +118,10 @@ module.exports = function (app) {
 
     function deleteWidget(req, res) {
         var widgetId = req.params.widgetId;
+        console.log("Trying to delete");
         for (var w in widgets) {
             if (widgets[w]._id === widgetId) {
+                console.log("Deleting");
                 widgets.splice(w, 1);
                 res.sendStatus(200);
             }

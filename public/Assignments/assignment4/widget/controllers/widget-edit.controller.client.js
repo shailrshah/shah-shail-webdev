@@ -29,6 +29,7 @@
         }
 
         function del(){
+            console.log("deleting")
             WidgetService
                 .deleteWidget(vm.widgetId)
                 .then(function(widgets){

@@ -5,34 +5,16 @@
 
     function widgetService($http){
         var api = {
-            "createHeaderWidget": createHeaderWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
             "createWidget": createWidget,
-            "findWidgetById": findWidgetById,
-            "createImageWidget": createImageWidget,
-            "createYoutubeWidget": createYoutubeWidget,
-            "createHtmlWidget": createHtmlWidget
+            "findWidgetById": findWidgetById
         };
         return api;
 
         function createWidget(pageId, type){
             return $http.post("/api/page/"+pageId+"/widget",{"widgetType":type});
-        }
-        function createHeaderWidget(pageId) {
-            return $http.post("/api/page/"+pageId+"/widget_header");
-        }
-
-        function createHtmlWidget(pageId) {
-            return $http.post("/api/page/"+pageId+"/widget_html");
-        }
-        function createImageWidget(pageId) {
-            return $http.post("/api/page/"+pageId+"/widget_image");
-        }
-
-        function createYoutubeWidget(pageId) {
-            return $http.post("/api/page/"+pageId+"/widget_youtube");
         }
 
         function findWidgetById(widgetId) {
