@@ -9,8 +9,7 @@
                 axis:"y",
                 handle: ".handle",
                 distance: 5,
-                scroll: true,
-                containment: "parent"
+                scroll: true
             });
         }
         return {

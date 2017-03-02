@@ -6,15 +6,16 @@
     function pagesController(PageService, $location, $routeParams){
         var vm = this;       //the controller's instance, containing info about view
 
-        vm.userId=$routeParams.uid;
-
         function init(){
+            vm.userId=$routeParams.uid;
             vm.websiteId=$routeParams.wid;
-            console.log(vm.websiteId);
-            vm.pages = PageService.findPageByWebsite(vm.websiteId);
             console.log(vm.pages);
+            PageService
+                .findPageByWebsite(vm.websiteId)
+                .then(function(pages){
+                    vm.pages = pages.data;
+                });
         }
         init();
     }
-
 })();

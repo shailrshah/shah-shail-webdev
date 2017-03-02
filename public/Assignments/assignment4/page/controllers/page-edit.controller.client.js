@@ -5,17 +5,26 @@
 
     function pageEditController(PageService, $location, $routeParams){
         var vm = this;       //the controller's instance, containing info about view
-        vm.userId=$routeParams.uid;
-
 
         vm.update = update;
         vm.del = del;
 
         function init(){
+            vm.userId=$routeParams.uid;
             vm.websiteId=$routeParams.wid;
             vm.pageId=$routeParams.pid;
-            vm.pages = PageService.findPageByWebsite(vm.websiteId);
-            vm.page = PageService.findPageById(vm.pageId);
+
+            PageService
+                .findPageByWebsite(vm.websiteId)
+                .then(function(pages){
+                    vm.pages = pages.data;
+            });
+
+            PageService
+                .findPageById(vm.pageId)
+                .then(function(page){
+                vm.page = page.data;
+            });
         }
         init();
 

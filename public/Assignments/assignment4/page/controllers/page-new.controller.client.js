@@ -5,13 +5,17 @@
 
     function pageNewController(PageService, $location, $routeParams){
         var vm=this;
-        vm.userId=$routeParams.uid;
-        vm.websiteId=$routeParams.wid;
 
         vm.createPage=createPage;
 
-        function init() {
-            vm.pages=PageService.findPageByWebsite(vm.websiteId)
+        function init(){
+            vm.userId=$routeParams.uid;
+            vm.websiteId=$routeParams.wid;
+            PageService
+                .findPageByWebsite(vm.websiteId)
+                .then(function(pages){
+                    vm.pages = pages.data;
+                });
         }
         init();
 

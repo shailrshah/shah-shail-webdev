@@ -19,14 +19,15 @@
                 .findAllWebsitesForUser(vm.userId)
                 .then(function (websites) {
                     vm.websites = websites.data;
+                    console.log(vm.websites);
                 });
 
             WebsiteService
                 .findWebsiteById(vm.websiteId)
                 .then(function(website){
-                    console.log(website.date + "data");
                    vm.website=website.data;
                    console.log(vm.website);
+                   console.log(website.data);
                 });
         }
         init();
