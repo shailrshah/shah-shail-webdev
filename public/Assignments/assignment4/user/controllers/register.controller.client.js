@@ -12,18 +12,15 @@
         }
         init();
 
-        function register(user){
-            console.log(user);
-            UserService
-                .getUserByUsername(user.username)
-                .success(function(u){
-                    if(u){
-                        vm.error = "Already Exists!";
-                        return;
-                    } else {
-                        $location.url("/user/"+id);
-                    }
-                });
+        function register(user) {
+            var promise = UserService.createUser(user);
+            promise.then(function (user) {
+                vm.user = user.data;
+                if (vm.user != null)
+                    $location.url("/user/" + vm.user._id);
+                else
+                    vm.error("Registering failied");
+            })
         }
     }
 })();

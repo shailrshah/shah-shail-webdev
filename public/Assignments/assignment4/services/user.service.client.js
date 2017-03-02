@@ -54,7 +54,6 @@
         }
 
         function getUserById(id) {
-            console.log("Get user by id "+id);
             return $http.get("/api/user/"+id);
         }
 
@@ -63,14 +62,11 @@
         }
 
         function createUser(newUser) {
-            var id=(new Date()).getTime().toString();
-            newUser._id = id;
-            users.push(newUser);
-            return id;
+            return $http.post("/api/user", newUser);
         }
 
-        function getUserByUsername(username){
-            return $http.get("/api/user?username="+username);
+        function getUserByUsername(name){
+            return $http.get("/api/user?username="+name);
         }
 
         function deleteUser(id){

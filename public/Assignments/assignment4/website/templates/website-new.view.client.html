@@ -23,7 +23,7 @@
             </div>
                 <a class="navbar-brand" href="#">New Website</a>
                 <div class="navbar-text pull-right hidden-sm-plus">
-                    <a ng-click="model.create()">
+                    <a ng-click="model.createWebsite(model.website)">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -65,6 +65,7 @@
                   id="description"
                   rows="4">
         </textarea>
+        {{model.website}}
     </div>
 </div>
 

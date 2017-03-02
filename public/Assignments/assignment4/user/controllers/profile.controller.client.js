@@ -15,7 +15,6 @@
             promise.success(function(user){
                 vm.user = user;
                 vm.updateduser=angular.copy(vm.user);
-                console.log(vm.user);
             });
         }
         init();

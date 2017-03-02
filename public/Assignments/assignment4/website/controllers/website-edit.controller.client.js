@@ -14,17 +14,30 @@
         vm.updateWebsite = updateWebsite;
 
         function init(){
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            console.log(vm.websiteId);
+            WebsiteService
+                .findAllWebsitesForUser(vm.userId)
+                .then(function (websites) {
+                    vm.websites = websites.data;
+                });
+
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(function(website){
+                    console.log(website.date + "data");
+                   vm.website=website.data;
+                   console.log(vm.website);
+                });
         }
         init();
 
         function updateWebsite(){
+            console.log(vm.website);
             WebsiteService.updateWebsite(vm.websiteId, vm.website);
             $location.url("/user/"+vm.userId+"/websites");
         };
 
-        function deleteWebsite () {
+        function deleteWebsite() {
             WebsiteService.deleteWebsite(vm.websiteId);
             $location.url("/user/"+vm.userId+"/websites");
         };

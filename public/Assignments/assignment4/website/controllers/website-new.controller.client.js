@@ -3,22 +3,23 @@
         .module("WebAppMaker")
         .controller("WebsiteNewController", websiteNewController);
 
-    function websiteNewController($routeParams, WebsiteService, $location) {
+    function websiteNewController($routeParams, $location, WebsiteService) {
         var vm = this;
+        vm.userId = $routeParams.uid;;
+        vm.createWebsite = createWebsite;
 
-        vm.create = create;
-
-        function init(){
-            vm.userId = $routeParams.uid;
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+        function init() {
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise.then(function(websites) {
+                vm.websites = websites.data;
+            });
         }
         init();
 
-        function create(){
-            WebsiteService.createWebsite(vm.userId, vm.website);
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
+        function createWebsite(website) {
+            console.log(website);
+            WebsiteService.createWebsite(vm.userId, website);
             $location.url("/user/"+vm.userId+"/websites");
-        }
+        };
     }
 })();
