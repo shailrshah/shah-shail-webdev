@@ -9,6 +9,7 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
+            "createWidget": createWidget,
             "findWidgetById": findWidgetById,
             "createImageWidget": createImageWidget,
             "createYoutubeWidget": createYoutubeWidget,
@@ -16,6 +17,9 @@
         };
         return api;
 
+        function createWidget(pageId, type){
+            return $http.post("/api/page/"+pageId+"/widget",{"widgetType":type});
+        }
         function createHeaderWidget(pageId) {
             return $http.post("/api/page/"+pageId+"/widget_header");
         }

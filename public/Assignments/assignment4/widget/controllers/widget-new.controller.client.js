@@ -15,11 +15,11 @@
        init();
 
        function create(type) {
-           console.log(type);
            WidgetService
-               .createWidget(vm.pageId, type)
-               .then(function(widget){
-                   $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets/"+widgetId);
+               .createWidget(vm.pageId,type)
+               .success(function (widget) {
+                   vm.widgetId=widget._id;
+                   $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets/"+vm.widgetId)
                });
        }
    }

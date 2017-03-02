@@ -20,9 +20,7 @@ module.exports = function (app) {
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-    app.post("/api/page/:pageId/widget_image", createImageWidget);
-    app.post("/api/page/:pageId/widget_html", createHtmlWidget);
-    app.post("/api/page/:pageId/widget_youtube", createYoutubeWidget);
+    app.post("/api/page/:pageId/widget", createWidget);
 
 
     var widgets = [
@@ -55,6 +53,19 @@ module.exports = function (app) {
         ];
 
 
+    function createWidget(req,res) {
+        var id = (new Date()).getTime().toString()
+        var pageId=req.params.pageId;
+        var widget=req.body;
+        widget._id =id;
+        widget.pageId = pageId.toString();
+
+        widgets.push(widget);
+        res.json(widget);
+        return;
+    }
+
+
     function createHeaderWidget(req, res) {
         var pageId = req.params.pageId;
         var widget = new Object();
@@ -66,38 +77,7 @@ module.exports = function (app) {
         res.send(widget._id);
     }
 
-    function createHtmlWidget(req, res) {
-        var pageId = req.params.pageId;
-        var widget = new Object();
-        widget._id = getRandomInt(100, 999).toString();
-        widget.widgetType = "HTML";
-        widget.pageId = pageId;
-        widget.tag = "new"
-        widgets.push(widget);
-        res.send(widget._id);
-    }
 
-    function createImageWidget(req, res) {
-        var pageId = req.params.pageId;
-        var widget = new Object();
-        widget._id = (new Date()).getTime().toString();
-        widget.widgetType = "IMAGE";
-        widget.pageId = pageId;
-        widget.tag = "new"
-        widgets.push(widget);
-        res.send(widget._id);
-    }
-
-    function createYoutubeWidget(req, res) {
-        var pageId = req.params.pageId;
-        var widget = new Object();
-        widget._id = getRandomInt(100, 999).toString();
-        widget.widgetType = "YOUTUBE";
-        widget.pageId = pageId;
-        widget.tag = "new"
-        widgets.push(widget);
-        res.send(widget._id);
-    }
 
     function findWidgetById(req, res) {
         var widgetId = req.params.widgetId;
