@@ -20,7 +20,6 @@ module.exports = function (app) {
                     websiteId: websiteId,
                     description: page_info.description};
         pages.push(page);
-
     }
 
     function findAllPagesForWebsite(req, res) {

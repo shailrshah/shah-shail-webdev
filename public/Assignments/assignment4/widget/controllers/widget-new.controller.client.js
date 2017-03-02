@@ -16,8 +16,11 @@
 
        function create(type) {
            console.log(type);
-           var widgetId = WidgetService.createWidget(vm.pageId, type);
-           $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets/"+widgetId);
+           WidgetService
+               .createWidget(vm.pageId, type)
+               .then(function(widget){
+                   $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets/"+widgetId);
+               });
        }
    }
 })();

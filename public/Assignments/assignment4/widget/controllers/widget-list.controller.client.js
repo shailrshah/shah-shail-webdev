@@ -13,9 +13,12 @@
         vm.getWidgetTemplateUrl=getWidgetTemplateUrl;
         vm.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
 
-
         function init(){
-            vm.widgets = WidgetService.findAllWidgets(vm.pageId);
+            WidgetService
+                .findWidgetsByPageId(vm.pageId)
+                .then(function(widgets){
+                    vm.widgets = widgets.data;
+                });
         }
         init();
 

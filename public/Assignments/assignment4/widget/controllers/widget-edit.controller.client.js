@@ -9,29 +9,39 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgetId = $routeParams.wgid;
+
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.del=del;
         vm.update=update;
 
         function init() {
-            console.log("In edit widget controller");
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
-            console.log(vm.widget);
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .then(function(widget){
+                    vm.widget = angular.copy(widget.data);
+                });
         }
         init();
 
         function getEditorTemplateUrl(type) {
+            console.log(type);
             return 'widget/templates/editors/widget-'+type+'-edit.view.client.html';
         }
 
         function del(){
-            WidgetService.deleteWidget(vm.widgetId);
-            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .then(function(widgets){
+                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+                });
         }
 
         function update(){
-            WidgetService.updateWidget(vm.widgetId, vm.widget);
-            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+            WidgetService
+                .updateWidget(vm.widgetId, vm.widget)
+                .then(function(widgets){
+                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+                })
         }
     }
 })();
