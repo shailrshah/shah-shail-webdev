@@ -15,6 +15,7 @@ require ("./test/app.js")(app);
 console.log("Starting server");
 require("./assignment_db/app.js")(app);
 
+console.log("Tuning in to port 3000")
 var port = process.env.PORT || 3000;
 
 app.listen(port);
