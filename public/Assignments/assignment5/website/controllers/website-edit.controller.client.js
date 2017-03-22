@@ -8,6 +8,8 @@
         vm.userId = $routeParams.uid;
         vm.websiteId=$routeParams.wid;
 
+        console.log(vm.userId+" "+vm.websiteId);
+
         vm.deleteWebsite = deleteWebsite;
         vm.updateWebsite = updateWebsite;
 

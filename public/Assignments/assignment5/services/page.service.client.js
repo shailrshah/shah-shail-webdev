@@ -26,6 +26,7 @@
         }
 
         function findPageByWebsite(websiteId) {
+            console.log("Getting all pages of website "+websiteId);
             return $http.get("/api/website/"+websiteId+"/page");
         }
 

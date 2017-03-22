@@ -3,5 +3,6 @@ module.exports = function(app){
 
 
     require("./services/user.service.server.js")(app, model.userModel);
-    require("./services/website.service.server.js")(app,model.websiteModel);
+    require("./services/website.service.server.js")(app, model.websiteModel);
+    require("./services/page.service.server.js")(app, model.pageModel);
 };

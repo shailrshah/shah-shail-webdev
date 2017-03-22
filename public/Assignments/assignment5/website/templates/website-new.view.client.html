@@ -40,7 +40,7 @@
             </div>
             <ul class="list-group">
                 <li ng-repeat="w in model.websites" class="list-group-item">
-                    <a href="#/user/{{w.developerId}}/websites/{{w._id}}/pages">
+                    <a href="#/user/{{w._user}}/websites/{{w._id}}/pages">
                         {{w.name}}
                     </a>
                     <a href="#/user/{{w._user}}/websites/{{w._id}}" class="pull-right">
