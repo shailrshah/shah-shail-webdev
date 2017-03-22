@@ -28,15 +28,16 @@ module.exports = function(){
     }
 
     function updateUser(userId, user){
-        return userModel.update({_id: userID}, {$set: user});
+        return userModel.update({_id: userId}, {$set: user});
     }
 
     function deleteUser(userId){
-        //todo
+        return userModel.findByIdAndRemove(userId, function (err,user) {
+            user.remove();
+        });
     }
 
     function findUserByCredentials(user, pass){
-        console.log("Logging in");
         return userModel.find({username: user, password: pass});
     }
 

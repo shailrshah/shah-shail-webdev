@@ -15,11 +15,11 @@
         return api;
 
         function authenticate(name, pass) {
+            console.log("authenticating "+name+" "+pass);
             return $http.get("/api/user?username="+name+"&password="+pass);
         }
 
         function findUserById(id) {
-            console.log("Finding by id "+id);
             return $http.get("/api/user/"+id);
         }
 

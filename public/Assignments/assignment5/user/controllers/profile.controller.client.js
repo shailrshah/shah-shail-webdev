@@ -22,9 +22,10 @@
         }
         init();
 
-        function update(uid, user){
+        function update(){
+            console.log(vm.updateduser);
             UserService
-                .updateUserById(uid, user)
+                .updateUserById($routeParams.uid, vm.updateduser)
                 .success(function(user){
                     if(user != null)
                         vm.message="Your profile has been updated"
@@ -33,10 +34,11 @@
                 });
         }
 
+
         function del (user){
             if(confirm("Do you really want to delete your profile?")){
                 UserService
-                    .deleteUser(user._id)
+                    .deleteUser($routeParams.uid)
                     .success(function () {
                         $location.url("/login");
                     })
