@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <a class="navbar-brand" href="#">Widget List</a>
+            <div class="navbar-text pull-right hidden-sm-plus">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets/new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="widget-list" wbdv-sortable="">
+        <div ng-repeat="widget in model.widgets">
+            <div class="jga-toolbar">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify handle"></span>
+            </div>
+
+            <div ng-switch="widget.widgetType">
+                <div ng-switch-when="HEADING">
+                    <ng-include src="'widget/templates/widget-HEADING.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <ng-include src="'widget/templates/widget-IMAGE.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="HTML">
+                    <ng-include src="'widget/templates/widget-HTML.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <ng-include src="'widget/templates/widget-YOUTUBE.view.client.html'"></ng-include>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/user/{{model.userId}}" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
+        </a>
+    </div>
+</nav>

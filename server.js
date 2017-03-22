@@ -12,6 +12,7 @@ require ("./test/app.js")(app);
 
 //assignment server
 require("./assignment/app.js")(app);
+require("./assignment_db/app.js");
 
 var port = process.env.PORT || 3000;
 
