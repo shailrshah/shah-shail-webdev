@@ -6,8 +6,8 @@
     function userService($http) {
         var api = {
             "createUser": createUser,
-            "getUserById": getUserById,
-            "getUserByUsername": getUserByUsername,
+            "findUserById": findUserById,
+            "findUserByUsername": findUserByUsername,
             "authenticate": authenticate,
             "updateUserById": updateUserById,
             "deleteUser": deleteUser
@@ -18,19 +18,21 @@
             return $http.get("/api/user?username="+name+"&password="+pass);
         }
 
-        function getUserById(id) {
+        function findUserById(id) {
+            console.log("Finding by id "+id);
             return $http.get("/api/user/"+id);
         }
 
         function updateUserById(id, updatedUser) {
-              return $http.put("/api/user/"+id, updatedUser);
+            return $http.put("/api/user/"+id, updatedUser);
         }
 
         function createUser(newUser) {
             return $http.post("/api/user", newUser);
         }
 
-        function getUserByUsername(name){
+        function findUserByUsername(name){
+            console.log("Finding by username.."+name);
             return $http.get("/api/user?username="+name);
         }
 

@@ -11,10 +11,12 @@
 
         function init(){
             var uid =  $routeParams.uid;
-            var promise = UserService.getUserById(uid);
+            console.log(uid);
+            var promise = UserService.findUserById(uid);
 
             promise.success(function(user){
                 vm.user = user;
+                console.log(user);
                 vm.updateduser=angular.copy(vm.user);
             });
         }

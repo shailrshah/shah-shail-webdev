@@ -11,8 +11,9 @@ app.use(express.static(__dirname + '/public'));
 require ("./test/app.js")(app);
 
 //assignment server
-require("./assignment/app.js")(app);
-require("./assignment_db/app.js");
+//require("./assignment/app.js")(app);
+console.log("Starting server");
+require("./assignment_db/app.js")(app);
 
 var port = process.env.PORT || 3000;
 
