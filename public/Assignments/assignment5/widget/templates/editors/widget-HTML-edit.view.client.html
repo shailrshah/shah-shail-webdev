@@ -1,14 +1,23 @@
 <div class="container">
-    <form>
-        <label for="html_name">Name</label>
-        <input type="text" class="form-control" id="html_name" ng-model="model.widget.name">
-        <label for="html_text">Text</label>
-        <input type="text" id="html_text" class="form-control"
-               ng-model="model.widget.text">
+    <div class="form-group">
+        <!--<label for="inputname">Text</label>-->
+        <!--<textarea class="form-control"-->
+        <!--id="inputname"-->
+        <!--ng-model="model.widget.text"></textarea>-->
 
-    </form>
-    <a class="btn btn-danger btn-block topp"
-       ng-click="model.del()">Delete</a>
+        <div ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote'],
+            ['bold','italics','underline','strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+            ['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html', 'insertImage','insertLink', 'wordcount', 'charcount']]">
+        </div>
+
+    </div>
+    <a class="form-control btn btn-danger"
+       ng-click="model.del()">
+        Delete
+    </a>
 
     <a class="btn btn-success btn-block topp"
        ng-click="model.update()">Update</a>

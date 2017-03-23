@@ -29,8 +29,18 @@
     </div>
 
     <div class="container">
+
+        <a class="btn btn-info btn-block"
+           href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets/{{model.widgetId}}/flickrsearch">
+            Search Flickr
+        </a>
+
         <a class="btn btn-danger btn-block"
            ng-click="model.del()">Delete</a>
+
+        <a class="btn btn-success btn-block topp"
+           ng-click="model.update()">Update</a>
+
     </div>
 
 </form>

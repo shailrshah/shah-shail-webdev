@@ -9,15 +9,18 @@
         vm.websiteId=$routeParams.wid;
         vm.pageId=$routeParams.pid;
 
-        vm.getTrustedHtml = getTrustedHtml;
+        vm.getTrustedHtml=getTrustedHtml;
         vm.getWidgetTemplateUrl=getWidgetTemplateUrl;
         vm.getYouTubeEmbedUrl=getYouTubeEmbedUrl;
 
         function init(){
+            console.log("Here in widget list controller");
             WidgetService
                 .findWidgetsByPageId(vm.pageId)
                 .then(function(widgets){
                     vm.widgets = widgets.data;
+                    if(vm.widgets.length == 0)
+                        vm.noWidgets="No Widgets have been added yet";
                 });
         }
         init();

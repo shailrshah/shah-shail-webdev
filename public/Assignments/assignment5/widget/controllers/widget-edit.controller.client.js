@@ -1,4 +1,4 @@
-(function(){
+(function() {
     angular
         .module("WebAppMaker")
         .controller("WidgetEditController", WidgetEditController);
@@ -11,37 +11,41 @@
         vm.widgetId = $routeParams.wgid;
 
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
-        vm.del=del;
-        vm.update=update;
+        vm.del = del;
+        vm.update = update;
 
         function init() {
+            console.log("edit controller initialized for "+vm.widgetId);
             WidgetService
                 .findWidgetById(vm.widgetId)
-                .then(function(widget){
+                .then(function (widget) {
                     vm.widget = angular.copy(widget.data);
                 });
+            console.log(vm.widget);
         }
+
         init();
 
-        function getEditorTemplateUrl(type) {
-            console.log(type);
-            return 'widget/templates/editors/widget-'+type+'-edit.view.client.html';
+        function getEditorTemplateUrl() {
+            console.log(vm.widget.type);
+            return 'widget/templates/editors/widget-' + vm.widget.type + '-edit.view.client.html';
         }
 
-        function del(){
+        function del() {
             console.log("deleting")
             WidgetService
                 .deleteWidget(vm.widgetId)
-                .then(function(widgets){
-                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+                .then(function (widgets) {
+                    $location.url("/user/" + vm.userId + "/websites/" + vm.websiteId + "/pages/" + vm.pageId + "/widgets");
                 });
         }
 
-        function update(){
+        function update() {
+            console.log("updating");
             WidgetService
                 .updateWidget(vm.widgetId, vm.widget)
-                .then(function(widgets){
-                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/pages/"+vm.pageId+"/widgets");
+                .then(function (widgets) {
+                    $location.url("/user/" + vm.userId + "/websites/" + vm.websiteId + "/pages/" + vm.pageId + "/widgets");
                 })
         }
     }

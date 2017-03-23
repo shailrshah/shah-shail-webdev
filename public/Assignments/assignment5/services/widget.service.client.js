@@ -1,36 +1,38 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
-        .factory("WidgetService", widgetService);
+        .factory("WidgetService",WidgetService)
 
-    function widgetService($http){
+    function WidgetService($http) {
         var api = {
-            "findWidgetsByPageId": findWidgetsByPageId,
-            "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget,
-            "createWidget": createWidget,
-            "findWidgetById": findWidgetById
+            "createWidget":createWidget,
+            "findWidgetsByPageId":findWidgetsByPageId,
+            "findWidgetById":findWidgetById,
+            "updateWidget":updateWidget,
+            "deleteWidget":deleteWidget,
+            "updateWidgetOrder":updateWidgetOrder
         };
         return api;
 
-        function createWidget(pageId, type){
-            return $http.post("/api/page/"+pageId+"/widget",{"widgetType":type});
+        function createWidget(pageId, widget) {
+            return $http.post("/api/page/"+pageId+"/widget",widget);
         }
-
+        function findWidgetsByPageId(pid) {
+            console.log("finding")
+            return $http.get("/api/page/"+pid+"/widget");
+        }
         function findWidgetById(widgetId) {
             return $http.get("/api/widget/"+widgetId);
         }
-
-        function findWidgetsByPageId(pageId) {
-            return $http.get("/api/page/"+pageId+"/widget");
+        function updateWidget(wgid, updatedWidget) {
+            console.log(updatedWidget);
+            return $http.put("/api/widget/"+wgid, updatedWidget);
         }
-
-        function updateWidget(widgetId, widget) {
-            return $http.put("/api/widget/"+widgetId,widget);
+        function deleteWidget(wgid) {
+            return $http.delete("/api/widget/"+wgid);
         }
-
-        function deleteWidget(widgetId) {
-            return $http.delete("/api/widget/"+widgetId);
+        function updateWidgetOrder(pageId, startIndex, endIndex) {
+            return $http.put("/page/"+pageId+"/widget?initial="+startIndex+"&final="+endIndex);
         }
     }
 })();

@@ -27,7 +27,7 @@
                 <span class="glyphicon glyphicon-align-justify handle"></span>
             </div>
 
-            <div ng-switch="widget.widgetType">
+            <div ng-switch="widget.type">
                 <div ng-switch-when="HEADING">
                     <ng-include src="'widget/templates/widget-HEADING.view.client.html'"></ng-include>
                 </div>
@@ -39,6 +39,9 @@
                 </div>
                 <div ng-switch-when="YOUTUBE">
                     <ng-include src="'widget/templates/widget-YOUTUBE.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="TEXT">
+                    <ng-include src="'widget/templates/widget-TEXT.view.client.html'"></ng-include>
                 </div>
             </div>
         </div>

@@ -6,6 +6,12 @@
     function configuration($routeProvider){
         $routeProvider
 
+            .when("/user/:uid/websites/:wid/pages/:pid/widgets/:wgid/flickrsearch",{
+                templateUrl: 'widget/templates/widget-flickr.view.client.html',
+                controller: "FlickrImageSearchController",
+                controllerAs: "model"
+            })
+
             .when("/user/:uid/websites/:wid/pages/:pid/widgets/new",{
                 templateUrl: "widget/templates/widget-chooser.view.client.html",
                 controller: "WidgetNewController",
@@ -80,6 +86,8 @@
                 controller: "WebsiteEditController",
                 controllerAs: "model"
             })
+
+
 
 
             // .otherwise({redirectTo : '/login'})

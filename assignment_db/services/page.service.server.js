@@ -67,7 +67,6 @@ module.exports = function (app, pageModel){
     }
 
     function deletePage(req, res) {
-
         var pageId = req.params.pageId;
 
         pageModel
