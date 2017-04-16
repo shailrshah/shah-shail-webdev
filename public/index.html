@@ -1,52 +1,182 @@
+<!-- DOCTYPE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
 
-    <script>
-        var alice = {
-            first: 'Alice',
-            last: 'Wonderland',
-            salary: 100000
-        };
-        console.log(alice);
-        alice['salary'] = alice.salary + 10000;
-        console.log(alice);
-        alice.salary += 10000;
-        console.log(alice);
-    </script>
+    <title>Shail's Page</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="author" content="Shail Shah">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </head>
+
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<div class="wrapper" id="wrapper">
 
-    <p>
-        Customize this home page to your linking.
-    </p>
+    <!--header-->
+    <header>
+        <div class="jumbotron jumbotron-fluid" id="banner">
+            <div class="parallax text-center" style="background-image: url(img/cover.jpg);">
+                <div class="parallax-pattern-overlay">
+                    <div class="container text-center" id="size-banner">
+                        <a href="#"><img id="site-title" src="img/suit_cropped.jpeg" alt="logo"/></a>
+                        <h3	 class="display-2">Welcome to Shail's Web Development Homepage!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="Assignments/assignment2/user/login.html">Assignment2 (User Interface Development)</a>
-        </li>
-        <li>
-            <a href="Assignments/assignment3/index.html">Assignment3 (Client Side Development)</a>
-        </li>
-        <li>
-            <a href="Assignments/assignment4/index.html">Assignment4 (Server Side Development)</a>
-        </li>
-        <li>
-            <a href="Assignments/assignment5/index.html#/">Assignment5 (Database Development)</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/shailrshah/shah-shail-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+
+
+    </header>
+
+    <!--about-->
+    <section class="aboutus" id="aboutus">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading text-center">
+                        <img class="dividerline" src="img/sep.png" alt="">
+                        <h2>About CS 5610</h2>
+
+                        <img class="dividerline" src="img/sep.png" alt="">
+                        <h3>Web applications are applications that use various Web technologies as building blocks. In CS 5610, HTML, CSS, JavaScript and AngularJS are used to build the front directly interacting with users. As users interact with the Web application they generate a sequence of HTTP requests directed at a server built on Node.js and Express, a popular Node.js library. The server handles the requests and use Mongoose to store and retrieve a data model from MongoDB, a NoSQL database. The front end, web services, and data access and storage are all hosted and/or configured in a Node.js runtime instance.</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="card card-inverse card-primary text-center">
+                        <img class="card-img-top" src="img/assignments.jpg" alt="Card image cap">
+                        <div class="card-block" id = "assignments">
+                            <h4 class="card-title">Assignments</h4>
+                            <p class="card-text">A website maker was made in the Spring of 2017, which could users login and make websites using various widgets.</p>
+
+                            <a href="Assignments/assignment2/user/login.html" class="btn btn-primary">Client-Side</a>
+                            <a href="Assignments/assignment3/index.html" class="btn btn-primary">Server-Side</a>
+                            <a href="Assignments/assignment4/index.html" class="btn btn-primary">Database</a>
+                            <a href="Assignments/assignment5/index.html" class="btn btn-primary">Security</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="card card-inverse card-success text-center">
+                        <img class="card-img-top" src="img/github.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Github</h4>
+                            <p class="card-text">The source code for this website can be found on Shail's github repsoitory.</p>
+                            <a href="https://github.com/shailrshah/shah-shail-webdev" class="btn btn-primary">shah-shail-webdev </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card card-inverse card-info text-center">
+                        <img class="card-img-top" src="img/screenshot.jpeg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Project</h4>
+                            <p class="card-text">SpeakApp is a web application that connects students and language coaches, for learning new languages.</p>
+                            <a href="http://speak-mean.herokuapp.com/#/login" class="btn btn-primary">SpeakMean WebApp</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--Contact Us-->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading">
+                        <img class="dividerline" src="img/sep.png" alt="">
+                        <h2>Contact Us</h2>
+                        <img class="dividerline" src="img/sep.png" alt="">
+                        <h3>Feel free to reach out for any questions!
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-width">
+            <div class="row">
+                <div class="done">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        Your message has been sent. Thank you!
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <form>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control" id="Name" placeholder="Name">
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <input type="email" class="form-control" id="Email" placeholder="Email">
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                        </fieldset>
+
+                        <button type="submit" class="contact submit" onclick="alert('Thanks for your feedback!')">Submit</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!--footer-->
+    <section class="footer" id="footer">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><a href="https://www.facebook.com/shailrshah"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/shailrshah"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/shailrshah"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                    <p>
+                        © 2017 Shail Shah All Rights Reserved<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<!-- JavaScripts -->
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
 </body>
 </html>
