@@ -10,9 +10,14 @@
             "findUserByUsername": findUserByUsername,
             "authenticate": authenticate,
             "updateUserById": updateUserById,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "logout": logout
         };
         return api;
+
+        function logout(){
+            return $http.post("/api/logout");
+        }
 
         function authenticate(user) {
             console.log("authenticating "+user.username+" "+user.password);

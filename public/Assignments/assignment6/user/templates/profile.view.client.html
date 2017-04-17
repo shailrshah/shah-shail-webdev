@@ -71,8 +71,10 @@
 
 
 
-        <a class="btn btn-lg btn-warning  btn-block"
-           href="#/login">Logout</a>
+        <a ng-click="model.logout()"
+           class="btn btn-lg btn-warning  btn-block">
+            Logout
+        </a>
 
         <a ng-click="model.del(model.user)"
             class="btn btn-lg btn-danger  btn-block">

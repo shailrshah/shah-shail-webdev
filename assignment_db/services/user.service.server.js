@@ -9,11 +9,17 @@ module.exports = function (app, userModel){
     app.put('/api/user/:userId', updateUser);
     app.delete('/api/user/:userId', deleteUser);
     app.post  ('/api/login', passport.authenticate('local'), login);
+    app.post('/api/logout', logout);
 
     function login(req, res) {
         var user = req.user;
         console.log(user);
         res.json(user);
+    }
+
+    function logout(req, res) {
+        req.logout();
+        res.send(200);
     }
 
     passport.serializeUser(serializeUser);
