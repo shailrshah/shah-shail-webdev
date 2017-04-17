@@ -1,9 +1,66 @@
 module.exports = function (app, userModel){
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+
     app.post("/api/user", createUser);
     app.get("/api/user", findUser);
     app.get('/api/user/:userId', findUserById);
     app.put('/api/user/:userId', updateUser);
     app.delete('/api/user/:userId', deleteUser);
+    app.post  ('/api/login', passport.authenticate('local'), login);
+
+    function login(req, res) {
+        var user = req.user;
+        console.log(user);
+        res.json(user);
+    }
+
+    passport.serializeUser(serializeUser);
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    passport.deserializeUser(deserializeUser);
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    console.log(username+" "+password);
+                    console.log("in local strategy");
+                    console.log(user);
+                    if(user[0].username == username && user[0].password == password) {
+                        console.log("Match found");
+                        return done(null, user);
+                    } else {
+                        console.log("Match not found");
+                        console.log(user[0].username+" "+username);
+                        console.log(user[0].password+" "+password);
+                        return done(null, false);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+
 
 
     function createUser(req, res){

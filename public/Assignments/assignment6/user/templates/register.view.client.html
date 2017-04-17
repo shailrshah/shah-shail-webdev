@@ -1,0 +1,55 @@
+    <div class="container-fluid">
+        <h1>Register</h1>
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
+
+        <form>
+            <p><label class="sr-only" for="firstName">first Name</label>
+                <input class="form-control input-lg"
+                       type="text"
+                       placeholder="Bob"
+                       id="firstName"
+                       ng-model="user.firstName"></p>
+
+            <p><label class="sr-only" for="lastName">last Name</label>
+                <input class="form-control input-lg"
+                       type="text"
+                       placeholder="Smith"
+                       id="lastName"
+                       ng-model="user.lastName"></p>
+
+            <p><label class="sr-only" for="email">email</label>
+                <input class="form-control input-lg"
+                       type="text"
+                       placeholder="bobsmith@gmail.com"
+                       id="email"
+                       ng-model="user.email"></p>
+
+            <p><label class="sr-only" for="username">username</label>
+            <input class="form-control input-lg"
+                   type="text"
+                   placeholder="username"
+                   id="username"
+                   ng-model="user.username"></p>
+
+        <p><label class="sr-only" for="password">password</label>
+            <input class="form-control input-lg"
+                   type="password"
+                   placeholder="password"
+                   id="password"
+                   ng-model="user.password"></p>
+
+        <p><label class="sr-only" for="verify-password">re-enter password</label>
+            <input class="form-control input-lg"
+                   type="password"
+                   placeholder="re-enter password"
+                   id="verify-password"
+                   ng-model="user.password2"></p>
+
+        <a class="btn btn-success btn-lg btn-block"
+           ng-click="model.register(user)">Register</a>
+        <a class="btn btn-danger btn-lg btn-block"
+           href="#/login">Cancel</a>
+        </form>
+    </div>

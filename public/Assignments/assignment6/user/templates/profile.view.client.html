@@ -1,0 +1,89 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left invisible">
+                <a href="../user/profile.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <span class="navbar-brand">Edit Profile</span>
+
+            <div class="navbar-text pull-right hidden-sm-plus">
+                <a ng-click="model.update(model.user._id, model.updateduser)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            <span class="sr-only">Error:</span>
+            {{model.error}}
+        </div>
+        <div ng-show="model.message" class="alert alert-success" role="alert">
+            <span class="sr-only">Error:</span>
+            {{model.message}}
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text"
+                       class="form-control input-lg"
+                       id="username"
+                       placeholder="Username"
+                       ng-value="model.user.username"
+                       ng-model="model.updateduser.username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email"
+                       class="form-control input-lg"
+                       id="email"
+                       placeholder="bob@gmail.com"
+                       ng-value="model.user.email"
+                       ng-model="model.updateduser.email">
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text"
+                       class="form-control input-lg"
+                       id="first-name"
+                       placeholder="Bob"
+                       ng-value="model.user.firstName"
+                       ng-model="model.updateduser.firstName">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text"
+                       class="form-control input-lg"
+                       id="last-name"
+                       placeholder="Smith"
+                       ng-value="model.user.lastName"
+                       ng-model="model.updateduser.lastName">
+            </div>
+        </form>
+
+        <a class="btn btn-lg btn-primary btn-block"
+           href="#/user/{{model.user._id}}/websites">Websites</a>
+
+
+
+        <a class="btn btn-lg btn-warning  btn-block"
+           href="#/login">Logout</a>
+
+        <a ng-click="model.del(model.user)"
+            class="btn btn-lg btn-danger  btn-block">
+            Delete Account
+        </a>
+    </div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/user/{{model.user._id}}" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
+        </a>
+    </div>
+</nav>

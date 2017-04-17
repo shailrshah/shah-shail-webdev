@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Sortable - Default functionality</title>
+    <script
+            src="http://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(init);
+
+        function init(){
+            $('h1').html('Hello hello');
+            var body = jQuery('body');
+            var newH2 = jQuery('<h2>This is dynamic</h2>');
+            body.prepend(newH2);
+
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+
+            var list = $('<ul>');
+            for(var m in months){
+                var item = $('<li>');
+                item.append(months[m]);
+
+                list.append(item);
+
+                console.log(list);
+            }
+            $('body').append(list);
+
+            $('h1').draggable();
+
+            list.sortable();
+        }
+
+        $(function(){
+            $("#sortable").sortable();
+        });
+    </script>
+
+</head>
+<body>
+
+<h1>hello</h1>
+
+<ul id="sortable">
+    <li> 1 long para
+    <li> 2 long para
+    <li> 3 long para
+    <li> 4 long para
+    <li> 5 long para
+    <li> 6 long para
+</ul>
+
+</body>
+</html>

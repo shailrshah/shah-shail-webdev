@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <span class="navbar-brand">Choose Widget</span>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                Name
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a ng-click="model.createHeaderWidget(1)">
+                        Header 1
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createHeaderWidget(2)">
+                        Header 2
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createHeaderWidget(3)">
+                        Header 3
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createYoutubeWidget()">
+                        Youtube
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createImageWidget()">
+                        Image
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createHTMLWidget()">
+                        HTML
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a ng-click="model.createTEXTWidget()">
+                        Text Input
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand lil-margin"></span>
+        </a>
+    </div>
+</nav>

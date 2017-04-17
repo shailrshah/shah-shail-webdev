@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="row container-fluid">
+    <div class="col-sm-12">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <a class="navbar-brand" href="#">Widget List</a>
+        <div class="navbar-text pull-right hidden-sm-plus">
+            <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/pages/{{model.pageId}}/widgets/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+    </div>
+</div>
+</nav>
+
+
+<div class="container-fluid"
+     ng-include="model.getEditorTemplateUrl(model.widget.widgetType)">
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#/user/{{model.userId}}" class="navbar-link">
+            <span class="glyphicon glyphicon-user pull-right navbar-brand"></span>
+        </a>
+    </div>
+</nav>

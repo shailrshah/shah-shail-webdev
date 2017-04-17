@@ -8,7 +8,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
 
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+
+app.use(cookieParser());
+//app.use(session({ secret: process.env.SESSION_SECRET}));
+
 require ("./test/app.js")(app);
+
+var passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 //assignment server
 //require("./assignment/app.js")(app);
