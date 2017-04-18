@@ -10,6 +10,32 @@ module.exports = function (app, userModel){
     app.delete('/api/user/:userId', deleteUser);
     app.post  ('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
+    app.post ('/api/register', register);
+
+    function register (req, res) {
+        var user = req.body;
+        console.log("In server");
+        console.log(user);
+        userModel
+            .createUser(user)
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                console.log("Error occured");
+                                res.status(400).send(err);
+                            } else {
+                                console.log("Successfully registered");
+                                console.log(user);
+                                res.json(user);
+                            }
+                        });
+                    }
+                }
+            );
+    }
+
 
     function login(req, res) {
         var user = req.user;

@@ -3,12 +3,12 @@
         .module("WebAppMaker")
         .controller("RegisterController", registerController);
 
-    function registerController(UserService,$location){
+    function registerController(UserService,$location, $rootScope){
         var vm = this;
         vm.register = register;
 
         function init(){
-            //nothing to do here
+
         }
         init();
 
@@ -21,11 +21,14 @@
                     .success(function(returned_user){
                         if(returned_user==null){
                             UserService
-                                .createUser(user)
+                                .register(user)
                                 .success(function(user){
                                     if(user==null){
                                         vm.error = "Failed to create user";
                                     } else{
+                                        console.log("Made user");
+                                        console.log(user);
+                                        $rootScope.currentUser = user;
                                         $location.url("/user/"+user._id);
                                     }
                                 });

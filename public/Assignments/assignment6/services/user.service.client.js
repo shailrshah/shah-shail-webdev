@@ -11,7 +11,8 @@
             "authenticate": authenticate,
             "updateUserById": updateUserById,
             "deleteUser": deleteUser,
-            "logout": logout
+            "logout": logout,
+            "register": register
         };
         return api;
 
@@ -35,6 +36,12 @@
 
         function createUser(newUser) {
             return $http.post("/api/user", newUser);
+        }
+
+        function register(user){
+            console.log("Trying to register. Sending post request");
+            console.log(user);
+            return $http.post("/api/register", user);
         }
 
         function findUserByUsername(name){
