@@ -6,27 +6,35 @@
         {{model.error}}
     </div>
 
-    <form>
+    <form name="form1" novalidate>
     <p><label class="sr-only" for="username">username</label>
-        <input required="true"
-               ng-model="user.username"
+        <input ng-model="user.username"
+               name="username"
                class="form-control input-lg"
                type="text"
                placeholder="username"
-               id="username"></p>
+               id="username"
+               required></p>
+        <span ng-if="form1.$submitted && form1.username.$error.required">Username is needed</span>
 
     <p><label class="sr-only" for="password">password</label>
         <input ng-model="user.password"
                class="form-control input-lg"
                type="password"
                placeholder="password"
-               id="password" required></p>
-
+               id="password"
+               name="password"
+               required></p>
+        <span ng-if="form1.$submitted && form1.password.$error.required">Password is needed</span>
     <p>
-        <a ng-click="model.login(user)"
-           class="btn btn-primary btn-lg btn-block">
-            Login
-        </a>
+
+
+
+        <button type="submit"
+                ng-click="model.login(user)"
+                class="btn btn-primary btn-lg btn-block">
+                Login
+        </button>
     </p>
 
     <p>

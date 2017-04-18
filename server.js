@@ -20,6 +20,9 @@ var passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+var bcrypt = require("bcrypt-nodejs");
+
 //assignment server
 //require("./assignment/app.js")(app);
 console.log("Starting server");

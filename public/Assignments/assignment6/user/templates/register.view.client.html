@@ -4,7 +4,7 @@
             {{model.error}}
         </div>
 
-        <form>
+        <form name="form1" novalidate>
             <p><label class="sr-only" for="firstName">first Name</label>
                 <input class="form-control input-lg"
                        type="text"
@@ -31,24 +31,33 @@
                    type="text"
                    placeholder="username"
                    id="username"
-                   ng-model="user.username"></p>
+                   name="username"
+                   ng-model="user.username" required></p>
+            <span ng-if="form1.$submitted && form1.username.$error.required">Username is needed</span>
 
         <p><label class="sr-only" for="password">password</label>
             <input class="form-control input-lg"
                    type="password"
                    placeholder="password"
                    id="password"
-                   ng-model="user.password"></p>
+                   name="password"
+                   ng-model="user.password" required></p>
+            <span ng-if="form1.$submitted && form1.password.$error.required">Password is needed</span>
 
         <p><label class="sr-only" for="verify-password">re-enter password</label>
             <input class="form-control input-lg"
                    type="password"
                    placeholder="re-enter password"
                    id="verify-password"
-                   ng-model="user.password2"></p>
+                   name="verifypassword"
+                   ng-model="user.password2" required></p>
+            <span ng-if="form1.$submitted && form1.verifypassword.$error.required">Password is needed</span>
 
-        <a class="btn btn-success btn-lg btn-block"
-           ng-click="model.register(user)">Register</a>
+            <span ng-if="form1.$submitted && form1.verifypassword!=form1.password">Passwords must match</span>
+
+        <button type="submit"
+                class="btn btn-success btn-lg btn-block"
+                ng-click="model.register(user)">Register</button>
         <a class="btn btn-danger btn-lg btn-block"
            href="#/login">Cancel</a>
         </form>

@@ -1,5 +1,7 @@
 module.exports = function (app, userModel){
     var passport = require('passport');
+    var bcrypt = require('bcrypt-nodejs');
+
     var LocalStrategy = require('passport-local').Strategy;
     passport.use(new LocalStrategy(localStrategy));
 
@@ -14,11 +16,14 @@ module.exports = function (app, userModel){
     app.get ('/api/loggedin', loggedin);
 
     function loggedin(req, res) {
+        console.log("Logging in:" + req.isAuthenticated());
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
     function register (req, res) {
         var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
+        console.log(user.password);
         console.log("In server");
         console.log(user);
         userModel
@@ -43,6 +48,7 @@ module.exports = function (app, userModel){
 
 
     function login(req, res) {
+        console.log("Logging in:" + req.isAuthenticated());
         var user = req.user;
         console.log(user);
         res.json(user);
@@ -74,6 +80,7 @@ module.exports = function (app, userModel){
     }
 
     function localStrategy(username, password, done) {
+        password = bcrypt.hashSync(password);
         userModel
             .findUserByCredentials(username, password)
             .then(
@@ -81,6 +88,7 @@ module.exports = function (app, userModel){
                     console.log(username+" "+password);
                     console.log("in local strategy");
                     console.log(user);
+                    user.password = bcrypt.hashSync(user.password);
                     if(user[0].username == username && user[0].password == password) {
                         console.log("Match found");
                         return done(null, user);

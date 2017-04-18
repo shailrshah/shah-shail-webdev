@@ -2,6 +2,10 @@ module.exports = function(){
     var mongoose = require("mongoose");
 
     var userSchema = mongoose.Schema({
+        facebook: {
+            id:    String,
+            token: String
+        },
         username: {type: String, required: true},
         password: String,
         firstName: String,
