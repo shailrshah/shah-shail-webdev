@@ -11,6 +11,11 @@ module.exports = function (app, userModel){
     app.post  ('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
+    app.get ('/api/loggedin', loggedin);
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
 
     function register (req, res) {
         var user = req.body;
