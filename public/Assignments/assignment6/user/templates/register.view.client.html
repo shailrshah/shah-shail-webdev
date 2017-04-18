@@ -53,7 +53,9 @@
                    ng-model="user.password2" required></p>
             <span ng-if="form1.$submitted && form1.verifypassword.$error.required">Password is needed</span>
 
-            <span ng-if="form1.$submitted && form1.verifypassword!=form1.password">Passwords must match</span>
+            <span ng-if="form1.$submitted && form1.verifypassword.$viewValue!=form1.password.$viewValue">Passwords must match</span>
+            {{form1.password.$viewValue}}
+            {{form1.verifypassword.$viewValue}}
 
         <button type="submit"
                 class="btn btn-success btn-lg btn-block"

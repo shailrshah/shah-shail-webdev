@@ -5,6 +5,18 @@ module.exports = function (app, userModel){
     var LocalStrategy = require('passport-local').Strategy;
     passport.use(new LocalStrategy(localStrategy));
 
+    var facebookConfig = {
+
+        clientID     : '223327438152171',
+        clientSecret : '517685c1cc6b6dcdcec375a97fbf5d86',
+        callbackURL  : 'http://www.example.com/auth/facebook/callback'
+
+    };
+    var FacebookStrategy = require('passport-facebook').Strategy;
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+
+
     app.post("/api/user", createUser);
     app.get("/api/user", findUser);
     app.get('/api/user/:userId', findUserById);
@@ -14,6 +26,8 @@ module.exports = function (app, userModel){
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.get ('/api/loggedin', loggedin);
+    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
 
     function loggedin(req, res) {
         console.log("Logging in:" + req.isAuthenticated());
@@ -80,16 +94,15 @@ module.exports = function (app, userModel){
     }
 
     function localStrategy(username, password, done) {
-        password = bcrypt.hashSync(password);
         userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
                     console.log(username+" "+password);
                     console.log("in local strategy");
                     console.log(user);
-                    user.password = bcrypt.hashSync(user.password);
-                    if(user[0].username == username && user[0].password == password) {
+                    user.password = user.password;
+                    if(user[0].username == username && bcrypt.compareSync(password, user[0].password)) {
                         console.log("Match found");
                         return done(null, user);
                     } else {
@@ -103,6 +116,11 @@ module.exports = function (app, userModel){
                     if (err) { return done(err); }
                 }
             );
+    }
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        developerModel
+            .findUserByFacebookId(profile.id)
     }
 
 
