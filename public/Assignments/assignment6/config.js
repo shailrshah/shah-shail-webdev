@@ -3,32 +3,7 @@
         .module("WebAppMaker")
         .config(configuration);
 
-
-
-
-
-
     function configuration($routeProvider){
-
-        var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
-            console.log("Checking if logged in");
-            var deferred = $q.defer();
-            $http.get('/api/loggedin').success(function(user) {
-                $rootScope.errorMessage = null;
-                console.log(user);
-                if (user !== '0') {
-                    $rootScope.currentUser = user;
-                    console.log("okay");
-                    deferred.resolve();
-                } else {
-                    console.log("Not okay");
-                    deferred.reject();
-                    $location.url('/');
-                }
-            });
-            return deferred.promise;
-        };
-
         $routeProvider
 
             .when("/user/:uid/websites/:wid/pages/:pid/widgets/:wgid/flickrsearch",{
@@ -94,14 +69,8 @@
                 templateUrl: "user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
-                //resolve: { loggedin: checkLoggedin }
+                //resolve: {loggedin: checkLoggedin}
             })
-
-            // .when("/user/:uid", {
-            //     templateUrl: "user/templates/profile.view.client.html",
-            //     controller: "ProfileController",
-            //     controllerAs: "model"
-            // })
 
             .when("/user/:uid/websites", {
                 templateUrl: "website/templates/website-list.view.client.html",
@@ -121,8 +90,24 @@
             })
 
 
-
-
+            function checkLoggedin($q, $timeout, $http, $location, $rootScope) {
+            console.log("Checking if logged in");
+            var deferred = $q.defer();
+            $http.get('/api/loggedin').success(function(user) {
+                $rootScope.errorMessage = null;
+                console.log(user);
+                if (user !== '0') {
+                    $rootScope.currentUser = user;
+                    console.log("okay");
+                    deferred.resolve();
+                } else {
+                    console.log("Not okay");
+                    deferred.reject();
+                    $location.url('/');
+                }
+            });
+            return deferred.promise;
+        };
 
 
             // .otherwise({redirectTo : '/login'})

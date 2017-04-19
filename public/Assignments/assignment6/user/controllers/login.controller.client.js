@@ -22,10 +22,15 @@
 
             var promise = UserService.authenticate(user);
             promise.success(function (user1) {
-                console.log(user1);
-                if (user1){
-                    $rootScope.currentUser = user1;
-                    $location.url("/user/" + user1[0]._id);
+                user2 = user1[0];
+                console.log(user2);
+                console.log(user2._id);
+                if (user2){
+                    $rootScope.currentUser = user2;
+                    console.log("Rootscope");
+                    console.log($rootScope.currentUser);
+                    console.log("Switching to profile page"+$rootScope.currentUser._id);
+                    $location.url("/user/" + user2._id);
                 }
                 else vm.error = "Not authenticated.";
             })

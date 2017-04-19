@@ -22,8 +22,8 @@
 
         function authenticate(user) {
             console.log("authenticating "+user.username+" "+user.password);
-            return $http.post("/api/login", user);
-            return $http.get("/api/user?username="+name+"&password="+pass);
+            var user = $http.post("/api/login", user);
+            return user;
         }
 
         function findUserById(id) {

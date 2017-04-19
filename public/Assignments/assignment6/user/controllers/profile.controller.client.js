@@ -11,6 +11,7 @@
         vm.logout = logout;
 
         function init(){
+            console.log("In profile controller");
             var uid =  $routeParams.uid;
             console.log(uid);
             var promise = UserService.findUserById(uid);

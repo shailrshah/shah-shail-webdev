@@ -9,13 +9,12 @@ module.exports = function (app, userModel){
 
         clientID     : '223327438152171',
         clientSecret : '517685c1cc6b6dcdcec375a97fbf5d86',
-        callbackURL  : 'http://www.example.com/auth/facebook/callback'
+        callbackURL  : 'localhost:3000/auth/facebook/callback'
 
     };
+
     var FacebookStrategy = require('passport-facebook').Strategy;
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-
-
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy))
 
     app.post("/api/user", createUser);
     app.get("/api/user", findUser);
@@ -27,10 +26,15 @@ module.exports = function (app, userModel){
     app.post ('/api/register', register);
     app.get ('/api/loggedin', loggedin);
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.get('/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/assignment/index.html#/user',
+            failureRedirect: '/assignment/index.html#/login'
+        }));
 
 
     function loggedin(req, res) {
-        console.log("Logging in:" + req.isAuthenticated());
+        console.log("(loggedin())Logging in:" + req.isAuthenticated());
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
@@ -64,6 +68,7 @@ module.exports = function (app, userModel){
     function login(req, res) {
         console.log("Logging in:" + req.isAuthenticated());
         var user = req.user;
+        console.log("The user will be printed");
         console.log(user);
         res.json(user);
     }
@@ -75,12 +80,15 @@ module.exports = function (app, userModel){
 
     passport.serializeUser(serializeUser);
     function serializeUser(user, done) {
-        done(null, user);
+        console.log("in serialize()");
+        console.log(user);
+        done(null, user[0]);
     }
 
     passport.deserializeUser(deserializeUser);
-
     function deserializeUser(user, done) {
+        console.log("In deserialize()");
+        console.log(user);
         userModel
             .findUserById(user._id)
             .then(
@@ -101,7 +109,6 @@ module.exports = function (app, userModel){
                     console.log(username+" "+password);
                     console.log("in local strategy");
                     console.log(user);
-                    user.password = user.password;
                     if(user[0].username == username && bcrypt.compareSync(password, user[0].password)) {
                         console.log("Match found");
                         return done(null, user);
@@ -119,11 +126,43 @@ module.exports = function (app, userModel){
     }
 
     function facebookStrategy(token, refreshToken, profile, done) {
-        developerModel
+        userModel
             .findUserByFacebookId(profile.id)
+            .then(
+                function (user) {
+                    if (user) {
+                        return done(null, user);
+                    } else {
+                        var newFacebookUser = {
+                            username: profile.displayName,
+                            firstName: profile.name.givenName,
+                            lastName: profile.name.familyName,
+                            _id:profile.id,
+                            facebook: {
+                                id: profile.id,
+                                token: token
+                            }
+                        };
+                        return userModel.createUser(newFacebookUser);
+                    }
+                },
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
+                }
+            )
+            .then(
+                function (user) {
+                    return done(null, user);
+                },
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
+                }
+            );
     }
-
-
 
 
     function createUser(req, res){
